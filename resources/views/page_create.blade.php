@@ -125,6 +125,13 @@
                             </div>
 
                             <div class="mx-2 pt-1">
+                                <x-input-label for="slug" :value="__('Slug')" />
+                                <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug"
+                                    :value="old('slug')" required autocomplete="slug" />
+                                <x-input-error :messages="$errors->get('slug')" class="mt-2" />
+                            </div>
+
+                            <div class="mx-2 pt-1">
                                 <x-input-label for="subtitle" :value="__('Subtítulo')" />
                                 <x-text-input id="subtitle" class="block mt-1 w-full" type="text" name="subtitle"
                                     :value="old('subtitle')" required autocomplete="subtitle" />
