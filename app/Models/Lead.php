@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Lead extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'title',
-        'slug',
-        'body'
+    'page_id',
+    'name',
+    'lastname',
+    'phone',
+    'email',
+    'age',
+    'state',
+    'city'
     ];
 }

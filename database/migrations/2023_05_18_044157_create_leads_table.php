@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('leads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('page_id')->constrained('pages');
             $table->string('name');
-            $table->json('body');
+            $table->string('lastname');
+            $table->string('phone');
+            $table->string('email');
+            $table->integer('age');
+            $table->integer('state');
+            $table->integer('city');
             $table->timestamps();
         });
     }
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('leads');
     }
 };

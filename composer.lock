@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c4005225a8cd4a3351563ced20240ad",
+    "content-hash": "23b2aa6741ab72280a4248df6cb70a1b",
     "packages": [
         {
             "name": "andreiio/blade-remix-icon",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andreiio/blade-remix-icon.git",
-                "reference": "4cf0dfcdde1f9b599b6fe0b5cd128619f42aea39"
+                "reference": "7b47624a72a0e7f9d369b9ef82c5b4b31bd74215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andreiio/blade-remix-icon/zipball/4cf0dfcdde1f9b599b6fe0b5cd128619f42aea39",
-                "reference": "4cf0dfcdde1f9b599b6fe0b5cd128619f42aea39",
+                "url": "https://api.github.com/repos/andreiio/blade-remix-icon/zipball/7b47624a72a0e7f9d369b9ef82c5b4b31bd74215",
+                "reference": "7b47624a72a0e7f9d369b9ef82c5b4b31bd74215",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
             "description": "A package to easily make use of Remix Icon in your Laravel Blade views.",
             "support": {
                 "issues": "https://github.com/andreiio/blade-remix-icon/issues",
-                "source": "https://github.com/andreiio/blade-remix-icon/tree/2.2.0"
+                "source": "https://github.com/andreiio/blade-remix-icon/tree/2.3.0"
             },
             "funding": [
                 {
@@ -62,7 +62,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-21T11:32:40+00:00"
+            "time": "2023-05-18T12:03:56+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -713,6 +713,51 @@
             "time": "2023-01-14T14:17:03+00:00"
         },
         {
+            "name": "facebook/php-business-sdk",
+            "version": "15.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/facebook-php-business-sdk.git",
+                "reference": "0d0540be0f65385932d7ef619adb791db5d2d12f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/0d0540be0f65385932d7ef619adb791db5d2d12f",
+                "reference": "0d0540be0f65385932d7ef619adb791db5d2d12f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.5 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "1.3.3",
+                "phpunit/phpunit": "~9",
+                "symfony/finder": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FacebookAds\\": "src/FacebookAds/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "PHP SDK for Facebook Business",
+            "homepage": "https://developers.facebook.com/",
+            "keywords": [
+                "ads",
+                "business",
+                "facebook",
+                "instagram",
+                "page",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/facebook/facebook-php-business-sdk/issues",
+                "source": "https://github.com/facebook/facebook-php-business-sdk/tree/15.0.3"
+            },
+            "time": "2023-01-18T00:39:50+00:00"
+        },
+        {
             "name": "fruitcake/php-cors",
             "version": "v1.2.0",
             "source": {
@@ -1256,16 +1301,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.10.1",
+            "version": "v10.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "be0478dea96a6619bb77676f36f67c1500846b17"
+                "reference": "21a5b6d9b669f32c10cc8ba776511b5f62599fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/be0478dea96a6619bb77676f36f67c1500846b17",
-                "reference": "be0478dea96a6619bb77676f36f67c1500846b17",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/21a5b6d9b669f32c10cc8ba776511b5f62599fea",
+                "reference": "21a5b6d9b669f32c10cc8ba776511b5f62599fea",
                 "shasum": ""
             },
             "require": {
@@ -1452,7 +1497,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-05-11T13:20:25+00:00"
+            "time": "2023-05-16T13:59:23+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -5880,16 +5925,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.21.0",
+            "version": "v1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d"
+                "reference": "f85772abd508bd04e20bb4b1bbe260a68d0066d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/92efad6a967f0b79c499705c69b662f738cc9e4d",
-                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/f85772abd508bd04e20bb4b1bbe260a68d0066d2",
+                "reference": "f85772abd508bd04e20bb4b1bbe260a68d0066d2",
                 "shasum": ""
             },
             "require": {
@@ -5942,9 +5987,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.21.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.22.0"
             },
-            "time": "2022-12-13T13:54:32+00:00"
+            "time": "2023-05-14T12:31:37+00:00"
         },
         {
             "name": "fidry/cpu-core-counter",
@@ -7190,22 +7235,23 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.20.4",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd"
+                "reference": "6df62b08faef4f899772bc7c3bbabb93d2b7a21c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
-                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6df62b08faef4f899772bc7c3bbabb93d2b7a21c",
+                "reference": "6df62b08faef4f899772bc7c3bbabb93d2b7a21c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
+                "nikic/php-parser": "^4.15",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^1.5",
@@ -7229,9 +7275,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.20.4"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.21.0"
             },
-            "time": "2023-05-02T09:19:37+00:00"
+            "time": "2023-05-17T13:13:44+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

@@ -3,6 +3,8 @@
         {{--<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>--}}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     </x-slot>
 
@@ -22,7 +24,6 @@
 -->
 
 
-    {{--}}
     <div class="bg-white dark:bg-zinc-950">
         <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-10 lg:px-8">
             <div
@@ -40,17 +41,9 @@
                     </defs>
                 </svg>
                 <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Boost your
-                        productivity.<br>Start using our app today.</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-300">Ac euismod vel sit maecenas id pellentesque eu sed
-                        consectetur. Malesuada adipiscing sagittis vel nulla.</p>
-                    <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                        <a href="#"
-                            class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get
-                            started</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span
-                                aria-hidden="true">→</span></a>
-                    </div>
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Parabéns!!!</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">Você será redirecionado para o Whatsapp, envie-nos uma mensagem para concluir.</p>
+
                 </div>
                 <div class="relative mt-16 h-80 lg:mt-8">
                     <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
@@ -58,9 +51,9 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
-    {{--}}
     {{--}}
     <section class="">
         <div class="isolate bg-white dark:bg-gray-900 px-6 py-10 sm:py-12 lg:px-8">
@@ -99,111 +92,12 @@
             </div>
         </div>
     </section>--}}
+
     
+
     
 
-    <section id="cadastro" name="cadastro" class="font-sans text-gray-900 antialiased">
-        <div class="flex flex-col sm:justify-center items-center py-10 bg-white dark:bg-zinc-950">
-
-
-            <div class="w-full lg:w-10/12  md:w-11/12 sm:w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-2xl dark:shadow-gray-700/40 overflow-hidden sm:rounded-lg">
-                <x-auth-session-status class="mb-4" :status="session('status')" />
-                <form action="{{route('page.create')}}" method="post">
-                    @csrf
-                    <div class="pt-10 pb-10">
-                        <div>
-                            <h1
-                                class="text-3xl ml-2 font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-                                {{ __("Cadastro de página") }}
-                            </h1>
-                        </div>
-                        <div class="grid gap-6 pt-10 mb-6 md:grid-cols-1">
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="name" :value="__('Nome')" />
-                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    :value="old('name')" required autocomplete="name" />
-                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                            </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="slug" :value="__('Slug')" />
-                                <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug"
-                                    :value="old('slug')" required autocomplete="slug" />
-                                <x-input-error :messages="$errors->get('slug')" class="mt-2" />
-                            </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="title" :value="__('Título')" />
-                                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
-                                    :value="old('title')" required autocomplete="title" />
-                                <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                            </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="subtitle" :value="__('Subtítulo')" />
-                                <x-text-input id="subtitle" class="block mt-1 w-full" type="text" name="subtitle"
-                                    :value="old('subtitle')" required autocomplete="subtitle" />
-                                <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
-                            </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="desc" :value="__('Descrição')" />
-                                @if(old('desc'))
-                                <x-textbox-input id="desc" class="block mt-1 w-full" name="desc"
-                                desc="{{old('desc')}}" required autocomplete="desc"/>
-                                @else
-                                <x-textbox-input id="desc" class="block mt-1 w-full" name="desc"
-                                desc='' required autocomplete="desc"/>
-                                @endif
-                                <x-input-error :messages="$errors->get('desc')" class="mt-2" />
-                            </div>
-
-                        </div>
-
-                        <div class="grid gap-6 mb-6 md:grid-cols-2">
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Estado')" />
-                                <select id="state" name="state"
-                                    class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
-                                    required autocomplete="state">
-                                    <option value="">Selecione seu Estado</option>
-                                        @foreach ($states as $key => $value)
-                                            <option value="{{ $value['id'] }}" {{ old('state') == $value['id'] ? 'selected' : '' }}>{{ $value['name'] }}</option>
-                                        @endforeach
-                                </select>
-                            </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Cidade')" />
-                                <select id="city" name="city"
-                                    class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
-                                    required autocomplete="city">
-                                    @if(old('city') != null)
-                                    <option value="{{old('city')}} 'selected'">{{App\Models\City::find(old('city'))->name}}</option>
-                                    @else
-                                    <option>Selecione sua Cidade</option>
-                                    @endif
-                                </select>
-                            </div>
-
-                            
-
-                        </div>
-                        <div class="pt-8">
-                            <x-primary-button class="ml-3">
-                                {{ __('Enviar') }}
-                            </x-primary-button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-
-
-    </section>
-
+    
 
     <footer class="bg-white dark:bg-zinc-950 pt-40">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -266,29 +160,4 @@
     </footer>
 
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                
-                $('select[name="state"]').on('change', function() {
-                    var stateID = $(this).val();
-                    if(stateID) {
-                        $.ajax({
-                            url: '/city/'+stateID,
-                            type: "GET",
-                            dataType: "json",
-                            success:function(data) {   
-                                console.log("teste");   
-                                var city = "1";                
-                                $('select[name="city"]').empty();
-                                $.each(data, function(key, value) {
-                                $('select[name="city"]').append('<option value="'+ key +'">'+ value +'</option>');
-                                });
-                            }
-                        });
-                    }else{
-                        $('select[name="city"]').empty();
-                    }
-                });
-            });
-        </script>
 </x-app-layout>
