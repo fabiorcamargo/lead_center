@@ -1,5 +1,5 @@
 # Release Notes
-
+19-5
 ## [Unreleased](https://github.com/laravel/laravel/compare/v10.2.0...10.x)
 
 ## [v10.2.0](https://github.com/laravel/laravel/compare/v10.1.1...v10.2.0) - 2023-05-05
