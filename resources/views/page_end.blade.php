@@ -164,7 +164,7 @@
     <script>
         
     setTimeout(function() {
-        window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').'+'.env('WP_MSG_URL')}}";
+        window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}";
     }, 3000);   
     </script>
 </x-app-layout>
