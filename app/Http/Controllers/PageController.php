@@ -18,12 +18,16 @@ class PageController extends Controller
         //dd("$state $city");
         //dd($request->all());
 
+        $de = array('(',')',' ','-');
+        $para = array('','','','');
+        $request->tel = "55".str_replace($de, $para, $request->tel);
 
         $body = json_encode([
             'name' => $request->name,
             'title' => $request->title,
             'slug' => $request->slug,
             'subtitle' => $request->subtitle,
+            'tel' => $request->tel,
             'desc' => $request->desc,
             'state' => $state,
             'city' => $city

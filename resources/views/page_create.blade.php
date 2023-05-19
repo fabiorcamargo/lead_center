@@ -148,6 +148,19 @@
                             </div>
 
                             <div class="mx-2 pt-1">
+                                <x-input-label for="tel" :value="__('Celular')" />
+                                <div class="flex">
+                                    <span
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
+                                        <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
+                                        <h4 class="mr-8 ml-2">+55 </h4>
+                                    </span>
+                                    <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                                        class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
+                                </div>
+                            </div>
+
+                            <div class="mx-2 pt-1">
                                 <x-input-label for="desc" :value="__('Descrição')" />
                                 @if(old('desc'))
                                 <x-textbox-input id="desc" class="block mt-1 w-full" name="desc"
@@ -264,6 +277,21 @@
             </div>
         </div>
     </footer>
+
+        <script>
+            const handlePhone = (event) => {
+            let input = event.target
+            input.value = phoneMask(input.value)
+            }
+    
+            const phoneMask = (value) => {
+            if (!value) return ""
+            value = value.replace(/\D/g,'')
+            value = value.replace(/(\d{2})(\d)/,"($1) $2")
+            value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+            return value
+            }
+        </script>
 
 
         <script type="text/javascript">

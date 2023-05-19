@@ -38,6 +38,7 @@ Route::get('/page/show/{slug}', function ($slug) {
     Cookie::queue('fbid', $fbclid, 0);
     $page = Page::where('slug', $slug)->first();
     $states = States::orderBy('name')->get();
+    
     return view('page_show')->with(['page' => $page, 'states' => $states]);
 })->name('page.show');
 

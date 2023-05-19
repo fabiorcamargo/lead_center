@@ -140,7 +140,7 @@ class ConversionApiFB extends Controller
         $object =($data);
         //dd($object->slug);
         
-        if (env('APP_DEBUG') == true){
+        if (env('APP_DEBUG') == false){
             $tempo = time();
             $page = url()->current();
             $eventid = Cookie::get('fbid');
@@ -152,6 +152,8 @@ class ConversionApiFB extends Controller
             $api = Api::init(null, null, $access_token);
 
             if (Auth::check()) {
+                return;
+                //die;
                 if(isset($_COOKIE['_fbp'])){
                     $fbp = $_COOKIE['_fbp'];
                     $user_data = (new UserData())  
@@ -355,6 +357,8 @@ public function PageView(){
         $api->setLogger(new CurlLogger());
 
         if (Auth::check()) {
+            return ;
+            exit();
             if(isset($_COOKIE['_fbp'])){
                 $fbp = $_COOKIE['_fbp'];
                 $user_data = (new UserData())  

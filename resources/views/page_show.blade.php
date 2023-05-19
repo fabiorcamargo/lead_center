@@ -27,7 +27,7 @@
     
     <div class="bg-white dark:bg-zinc-950">
         
-        <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-10 lg:px-8">
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 sm:py-10 lg:px-8">
             <div
                 class="relative isolate overflow-hidden dark:shadow-gray-700/40 bg-green-950 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
                 <svg viewBox="0 0 1024 1024"
@@ -169,6 +169,8 @@
                                     <option value="16">16</option>
                                     <option value="17">17</option>
                                     <option value="18">18</option>
+                                    <option value="18">19</option>
+                                    <option value="18">20</option>
                                 </select>
                             </div>
                         </div>
@@ -220,12 +222,13 @@
 
     
 
-    <footer class="bg-white dark:bg-zinc-950 pt-40">
+    <footer class="bg-white dark:bg-zinc-950 pt-20">
+        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
-                    <a href="https://flowbite.com/" class="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
+                    <a href="#cadastro" class="flex items-center">
+                        <img src="{{asset('storage/img/logo.svg')}}" class="h-8 mr-3" alt="{{$page->name}}" />
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pré-Militar</span>
                     </a>
@@ -277,6 +280,7 @@
                     </a>
                 </div>
             </div>
+        </div>
         </div>
     </footer>
     <script type="text/javascript">
