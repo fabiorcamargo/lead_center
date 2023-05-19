@@ -11,9 +11,13 @@ use stdClass;
 class PageController extends Controller
 {
     public function create(Request $request){
-        $state = (States::find($request->state)->first()->abbr);
-        $city = (City::find($request->city)->first()->name);
+        $state = (States::where('id', $request->state)->first()->abbr);
+        $city = (City::where('id',$request->city)->first()->name);
+        //dd(States::where('id', $request->state)->first()->abbr);
         //dd($request->all());
+        //dd("$state $city");
+        //dd($request->all());
+
 
         $body = json_encode([
             'name' => $request->name,

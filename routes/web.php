@@ -21,6 +21,12 @@ use Illuminate\Support\Facades\Cookie;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::domain('blog.' . env('APP_URL'))->group(function () {
+    Route::get('posts', function () {
+        dd('sim');
+        return 'Second subdomain landing page';
+    });
+});
 
 Route::get('/', function () {
     return view('welcome');
