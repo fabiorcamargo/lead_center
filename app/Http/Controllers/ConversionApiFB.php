@@ -51,7 +51,7 @@ class ConversionApiFB extends Controller
         
         $data->state = strtolower($data->state);
 
-        if (env('APP_DEBUG') == true){
+        if (env('APP_DEBUG') == false){
             $tempo = time();
 
             $page = url()->current();
@@ -244,7 +244,7 @@ return;
 public function AddToWishlist($data){
 
     $object =json_decode($data);
-    if (env('APP_DEBUG') == true){
+    if (env('APP_DEBUG') == false){
         $tempo = time();
         $page = url()->current();
         $eventid = Cookie::get('fbid');
@@ -345,7 +345,7 @@ return;
 
 public function PageView(){
 
-    if (env('APP_DEBUG') == true){
+    if (env('APP_DEBUG') == false){
         $tempo = time();
         $page = url()->current();
         $eventid = Cookie::get('fbid');
