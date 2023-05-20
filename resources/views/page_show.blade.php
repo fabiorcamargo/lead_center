@@ -219,7 +219,7 @@
 
 
     </section>
-
+    
     
 
     <footer class="bg-white dark:bg-zinc-950 pt-20">
@@ -334,7 +334,7 @@
         "event_source_url": "{{ url()->current() }}",
         "eventID": "{{ Cookie::get('fbid') }}",
         "user_data": {
-            "client_ip_address": "{{$_SERVER['HTTP_CF_CONNECTING_IP']}}",
+            "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
             "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
             @isset($_COOKIE['_fbp'])
             ,"fbp": "{{$_COOKIE['_fbp']}}",
@@ -351,6 +351,6 @@
     </script>
     @endif
 
-<x-fb-event :event="__('ViewContent')" :page="$page"/>
+    <x-fb-event :event="__('ViewContent')" :page="$page"/>
 
 </x-app-layout>
