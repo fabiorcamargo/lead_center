@@ -334,7 +334,7 @@
         "event_source_url": "{{ url()->current() }}",
         "eventID": "{{ Cookie::get('fbid') }}",
         "user_data": {
-            "client_ip_address": "{{$_SERVER['REMOTE_ADDR']}}",
+            "client_ip_address": "{{$_SERVER['HTTP_CF_CONNECTING_IP']}}",
             "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
             @isset($_COOKIE['_fbp'])
             ,"fbp": "{{$_COOKIE['_fbp']}}",

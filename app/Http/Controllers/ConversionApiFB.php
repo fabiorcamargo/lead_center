@@ -79,7 +79,7 @@ class ConversionApiFB extends Controller
                 /*
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                 ->setFbc($fbp . "." . $eventid)
                 ->setFbp($fbp);
@@ -96,7 +96,7 @@ class ConversionApiFB extends Controller
                 ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
             }
 
@@ -164,7 +164,7 @@ class ConversionApiFB extends Controller
                     ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                     ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                     ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                    ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                    ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                     ->setFbc($fbp . "." . $eventid)
                     ->setFbp($fbp);
@@ -177,7 +177,7 @@ class ConversionApiFB extends Controller
                     ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                     ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                     ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                    ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                    ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
                     }
                 
@@ -185,13 +185,13 @@ class ConversionApiFB extends Controller
                 if(isset($_COOKIE['_fbp'])){
                     $fbp = $_COOKIE['_fbp'];
                     $user_data = (new UserData())  
-                    ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                    ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                     ->setFbc($fbp . "." . $eventid)
                     ->setFbp($fbp);
                 }else{
                     $user_data = (new UserData())  
-                    ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                    ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
             }
 
@@ -266,7 +266,7 @@ public function AddToWishlist($data){
                 ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                 ->setFbc($fbp . "." . $eventid)
                 ->setFbp($fbp);
@@ -279,7 +279,7 @@ public function AddToWishlist($data){
                 ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
                 }
             
@@ -287,13 +287,13 @@ public function AddToWishlist($data){
             if(isset($_COOKIE['_fbp'])){
                 $fbp = $_COOKIE['_fbp'];
                 $user_data = (new UserData())  
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                 ->setFbc($fbp . "." . $eventid)
                 ->setFbp($fbp);
             }else{
                 $user_data = (new UserData())  
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
         }
 
@@ -370,7 +370,7 @@ public function PageView(){
                 ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                 ->setFbc($fbp . "." . $eventid)
                 ->setFbp($fbp);
@@ -383,7 +383,7 @@ public function PageView(){
                 ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
                 ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
                 ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
                 }
             
@@ -391,13 +391,13 @@ public function PageView(){
             if(isset($_COOKIE['_fbp'])){
                 $fbp = $_COOKIE['_fbp'];
                 $user_data = (new UserData())  
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
                 ->setFbc($fbp . "." . $eventid)
                 ->setFbp($fbp);
             }else{
                 $user_data = (new UserData())  
-                ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+                ->setClientIpAddress($_SERVER['HTTP_CF_CONNECTING_IP'])
                 ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
         }
 
