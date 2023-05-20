@@ -140,7 +140,7 @@ class ConversionApiFB extends Controller
         $object =($data);
         //dd($object->slug);
         
-        if (env('APP_DEBUG') == true){
+        if (env('APP_DEBUG') == false){
             
             $tempo = time();
             $page = url()->current();
