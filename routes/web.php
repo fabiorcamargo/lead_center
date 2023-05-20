@@ -42,6 +42,13 @@ Route::get('/page/show/{slug}', function ($slug) {
     return view('page_show')->with(['page' => $page, 'states' => $states]);
 })->name('page.show');
 
+Route::get('/page/leader/', function () {
+    
+    $states = States::orderBy('name')->get();
+    return view('page_leader')->with(['states' => $states]);
+
+})->name('page.leader');
+
 Route::get('/page/end/', function () {
     
     return view('page_end');

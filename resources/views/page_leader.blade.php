@@ -29,7 +29,7 @@
         
         <div class="mx-auto max-w-7xl py-6 sm:px-6 sm:py-10 lg:px-8">
             <div
-                class="relative isolate overflow-hidden dark:shadow-gray-700/40 bg-green-950 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+                class="relative isolate overflow-hidden dark:shadow-sky-500/40 bg-sky-950 px-6 pt-16 shadow-2xl rounded-lg sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
                 <svg viewBox="0 0 1024 1024"
                     class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
                     aria-hidden="true">
@@ -38,13 +38,13 @@
                     <defs>
                         <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
                             <stop stop-color="#7775D6" />
-                            <stop offset="1" stop-color="#fbbf24" />
+                            <stop offset="1" stop-color="#7775D6" />
                         </radialGradient>
                     </defs>
                 </svg>
                 <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">{{$page->name}}</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-300">{{json_decode($page->body)->desc}}</p>
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Portal Representante de Turma</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">Parabéns se você chegou até aqui é porque você foi escolhido como representante de sala, continue sendo esforçado e responsável que você terá uma brilhante carreira.</p>
                     <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                         <a href="#cadastro"
                             class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Cadastre-se</a>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="relative mt-16 h-80 lg:mt-8">
                     <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                        src="{{asset('storage/img/bg-militar.jpg')}}" alt="App screenshot" width="1824" height="1080">
+                        src="{{asset('storage/img/leader.jpg')}}" alt="App screenshot" width="500" height="500">
                 </div>
             </div>
         </div>
@@ -105,80 +105,79 @@
     <section id="cadastro" name="cadastro" class="font-sans text-gray-900 antialiased">
         <div class="flex flex-col sm:justify-center items-center py-10 bg-white dark:bg-zinc-950">
 
+            
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Indicações da turma:</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Insira os dados abaixo para iniciar as indicações.<br><br>Informações do Líde de Turma:</p>
+        <div class="pt-1">
+                                
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                :value="old('name')" placeholder="Seu Nome" required autocomplete="given-name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+        <div class="flex pt-2">
+            <span
+                class="inline-flex items-center px-2 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
+                <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
+                <h4 class="mr-6 ml-1">+55</h4>
+            </span>
+            <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
+        </div>
+        <div class="flex pt-2">
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+        </div>
+    </div>
+</div>
+
 
             <div
-                class="w-full lg:w-10/12  md:w-11/12 sm:w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-2xl dark:shadow-gray-700/40 overflow-hidden sm:rounded-lg">
+                class="w-full lg:w-10/12  md:w-11/12 sm:w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-2xl dark:shadow-sky-700/40 overflow-hidden sm:rounded-lg">
                 <div class="pt-10 pb-10">
                     <form action="{{route('lead.create')}}" method="post">
                         @csrf
                         <div>
                             <h1
                                 class="text-3xl ml-2 font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-                                {{ __("Cadastro Região de " . json_decode($page->body)->city . " - " .
-                                json_decode($page->body)->state) }}
+                                {{ __("Indicações da Turma")}}
                             </h1>
                         </div>
-                        <div class="grid gap-6 pt-10 mb-6 md:grid-cols-2">
-
-                            <input type="text" id="page_id" name="page_id" value="{{$page->id}}" hidden>
+                        <p class="mt-6 text-lg leading-8 text-gray-900 dark:text-white">Abaixo insira os dados dos indicados, mínimo 2  máximo 10.</p>
+                        <div class="grid pt-4 pd-4 gap-6 mb-6 md:grid-cols-1">
+                            
+                            <p class="mt-6 text-lg leading-8 text-gray-900 dark:text-white">Insira seus dados:</p> 
                             <div class="mx-2 pt-1">
-                                <x-input-label for="name" :value="__('Nome')" />
+                                
                                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    :value="old('name')" required autocomplete="given-name" />
+                                    :value="old('name')" placeholder="Seu Nome" required autocomplete="given-name" />
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="lastname" :value="__('Sobrenome')" />
-                                <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname"
-                                    :value="old('lastname')" required autocomplete="family-name" />
-                                <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
+                                    <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
+                                    <h4 class="mr-8 ml-2">+55 </h4>
+                                </span>
+                                <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                                    class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
                             </div>
-
-
                             <div class="mx-2 pt-1">
-                                <x-input-label for="tel" :value="__('Celular')" />
-                                <div class="flex">
-                                    <span
-                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
-                                        <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
-                                        <h4 class="mr-8 ml-2">+55 </h4>
-                                    </span>
-                                    <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
-                                        class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
-                                </div>
+                                
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                    :value="old('name')" placeholder="Sua Escola" required autocomplete="given-name" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-
+                            <p class="mt-6 text-lg leading-8 text-gray-900 dark:text-white">Selecione seu Estado e Cidade:</p>  
                             <div class="mx-2 pt-1">
-                                <x-input-label for="email" :value="__('Email (Caso não possua deixe em branco)')" />
-                                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    :value="old('email')" autocomplete="email" />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            </div>
-
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Idade')" />
-                                <select id="age" name="age"
-                                    class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm" required>
-                                    <option selected>Selecione sua Idade</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="18">19</option>
-                                    <option value="18">20</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="grid gap-6 mb-6 md:grid-cols-2">
-
-                            <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Estado')" />
                                 <select id="state" name="state"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                     required autocomplete="state">
@@ -191,7 +190,6 @@
                             </div>
 
                             <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Cidade')" />
                                 <select id="city" name="city"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                     required autocomplete="city">
@@ -203,8 +201,58 @@
                                     @endif
                                 </select>
                             </div>
-
+                            
                         </div>
+                        <div class="grid gap-6 pt-10 mb-6 md:grid-cols-1">
+                            <p class="mt-6 text-lg leading-8 text-gray-900 dark:text-white">Insira os dados dos Alunos:</p>
+                            <div class="mx-2 pt-1">
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                    :value="old('name')" placeholder="Nome" required autocomplete="given-name" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            </div>
+                            
+                            <div class="mx-2 pt-1">
+                                <div class="flex">
+                                    <span
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
+                                        <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
+                                        <h4 class="mr-8 ml-2">+55 </h4>
+                                    </span>
+                                    <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                                        class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid gap-6 pt-10 mb-6 md:grid-cols-1">
+                            <p class="mt-6 text-lg leading-8 text-gray-900 dark:text-white">Insira os dados dos Alunos:</p>
+                            <div class="mx-2 pt-1">
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                    placeholder="Nome" required autocomplete="given-name" />
+                            </div>
+                            
+                            <div class="mx-2 pt-1">
+                                <div class="flex">
+                                    <span
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600">
+                                        <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
+                                        <h4 class="mr-8 ml-2">+55 </h4>
+                                    </span>
+                                    <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                                        class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container1">
+                            <button class="add_form_field">Add New Field &nbsp; 
+                              <span style="font-size:16px; font-weight:bold;">+ </span>
+                            </button>
+                            
+                        </div>
+                        <div>
+                            <a href="javascript:myFunction();" class="add_form_field flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Link</a>
+                        </div>
+
+                        
                         <div class="pt-8">
                             <x-primary-button class="ml-3">
                                 {{ __('Enviar') }}
@@ -228,7 +276,7 @@
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="#cadastro" class="flex items-center">
-                        <img src="{{asset('storage/img/logo.svg')}}" class="h-8 mr-3" alt="{{$page->name}}" />
+                        <img src="{{asset('storage/img/logo.svg')}}" class="h-8 mr-3" alt="" />
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pré-Militar</span>
                     </a>
@@ -238,7 +286,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Sobre</h2>
                         <ul class="text-gray-600 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#cadastro" class="hover:underline">Quem Somos</a>
+                                <a href="https://flowbite.com/" class="hover:underline">Quem Somos</a>
                             </li>
                         </ul>
                     </div>
@@ -246,7 +294,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                         <ul class="text-gray-600 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="#cadastro" class="hover:underline">Política de Privacidade</a>
+                                <a href="#" class="hover:underline">Política de Privacidade</a>
                             </li>
                         </ul>
                     </div>
@@ -324,33 +372,35 @@
         }
     </script>
 
-@if(env('APP_DEBUG') == false)
-<script>
-    fbq("track", "ViewContent",
-    {
-        "event_name": "ViewContent",
-        "event_time": "{{ time() }}",
-        "action_source": "website",
-        "event_source_url": "{{ url()->current() }}",
-        "eventID": "{{ Cookie::get('fbid') }}",
-        "user_data": {
-            "client_ip_address": "{{$_SERVER['REMOTE_ADDR']}}",
-            "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
-            @isset($_COOKIE['_fbp'])
-            ,"fbp": "{{$_COOKIE['_fbp']}}",
-            "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid') }}"
-            @endisset
-        },
-        "custom_data": {
-            "content_ids": "{{$page->slug}}",
-            "content_category": "{{$page->tag}}",
-            "content_name": "{{$page->title}}"
-        }
-    }
-    )
+    <script>
+        $(document).ready(function() {
+        var max_fields = 10;
+        var wrapper = $(".container1");
+        var add_button = $(".add_form_field");
+
+        var x = 1;
+        $(add_button).click(function(e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+            } else {
+                alert('You Reached the limits')
+            }
+        });
+
+        $(wrapper).on("click", ".delete", function(e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
+    });
     </script>
+
+@if(env('APP_DEBUG') == false)
+
     @endif
 
-<x-fb-event :event="__('ViewContent')" :page="$page"/>
+
 
 </x-app-layout>
