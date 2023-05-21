@@ -109,7 +109,7 @@
             <div
                 class="w-full lg:w-10/12  md:w-11/12 sm:w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-2xl dark:shadow-gray-700/40 overflow-hidden sm:rounded-lg">
                 <div class="pt-10 pb-10">
-                    <form action="{{route('lead.create')}}" method="post">
+                    <form action="{{route('lead.create')}}" method="post" enctype="multipart/form-data" name="form" id="form">
                         @csrf
                         <div>
                             <h1
