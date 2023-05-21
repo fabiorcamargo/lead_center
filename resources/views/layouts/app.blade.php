@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        @if(env('APP_DEBUG') == false)
         <!-- Meta Pixel Code -->
         <script>
         !function(f,b,e,v,n,t,s)
@@ -22,6 +23,7 @@
         src="https://www.facebook.com/tr?id={{ env('CONVERSIONS_API_PIXEL_ID') }}&ev=PageView&noscript=1"
         /></noscript>
         <!-- End Meta Pixel Code -->
+        @endif
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 

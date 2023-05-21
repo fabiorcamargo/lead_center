@@ -19,17 +19,17 @@ class LeadController extends Controller
 
             //dd($request->tel);        
 
-        /*$lead = Lead::create([
+        $lead = Lead::create([
             'page_id' => $request->page_id,
             'name' => $request->name,
             'lastname' => $request->lastname,
             'phone' => $request->tel,
-            'email' => $request->email,
+            'email' => isset($request->email) ? $request->email : null,
             'age' => $request->age,
             'state' => $request->state,
             'city' => $request->city
-        ]);*/
-        $lead = 1;
+        ]);
+        //$lead = 1;
 
         $fb = new ConversionApiFB;
         $request->city = City::find($request->city)->name;
