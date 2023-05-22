@@ -3,8 +3,10 @@
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Lead;
 use App\Models\Page;
 use App\Models\States;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +57,11 @@ Route::get('/page/end/', function () {
 })->name('page.end');
 
 Route::post('/lead/create/', [LeadController::class, 'create'])->name('lead.create');
+Route::get('/lead/list/{id}', function($id){
+    $lead = Lead::where('page_id', $id)->orderBy('created_at')->get();
+    
+    return view('leads_list')->with(['pages'=>$lead]);
+})->name('lead.list');
 
 
 Route::get('/dashboard', function () {
@@ -72,7 +79,19 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/page/list', function(){
         $pages = Page::orderBy('created_at')->get();
-        return view('page_list')->with(['pages'=>$pages]);
+        $seven = Carbon::today()->subDays(7);
+        $tree = Carbon::today()->subDays(3);
+        $yesterday = Carbon::yesterday();
+        $today = Carbon::today();
+        /*$today =  Lead::where(
+            'page_id', '=', 1
+        )->where(
+            'created_at', '>=', $date
+        )->get();
+
+        dd($today);*/
+
+        return view('page_list')->with(['pages'=>$pages, 'seven'=>$seven]);
     });
     Route::post('/page/create', [PageController::class, 'create'])->name('page.create');
     

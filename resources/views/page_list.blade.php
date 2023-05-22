@@ -24,6 +24,10 @@
                                     <th scope="col" class="px-6 py-3">
                                         Slug
                                     </th>
+                                    
+                                    <th scope="col" class="px-6 py-3">
+                                        Leads
+                                    </th>
                                     <th scope="col" class="px-6 py-3">
                                         Criado
                                     </th>
@@ -49,6 +53,9 @@
                                         {{$page->slug}}
                                     </td>
                                     <td class="px-6 py-4">
+                                        {{$page->Leads->count()}}
+                                    </td>
+                                    <td class="px-6 py-4">
                                         {{$page->created_at->format('d-m-Y H:i')}}
                                     </td>
                                     <td class="px-6 py-4">
@@ -56,9 +63,9 @@
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <a href="{{route('page.show', ['slug' => $page->slug])}}"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ver</a>
-                                        <a href="#"
-                                            class="font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Editar</a>   
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Página</a>
+                                        <a href="{{route('lead.list', ['id' => $page->id])}}"
+                                            class="font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Leads</a>   
                                         <a href="#"
                                             class="font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</a>
                                             
