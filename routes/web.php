@@ -57,12 +57,6 @@ Route::get('/page/end/', function () {
 })->name('page.end');
 
 Route::post('/lead/create/', [LeadController::class, 'create'])->name('lead.create');
-Route::get('/lead/list/{id}', function($id){
-    $lead = Lead::where('page_id', $id)->orderBy('created_at')->get();
-    
-    return view('leads_list')->with(['pages'=>$lead]);
-})->name('lead.list');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -94,6 +88,11 @@ Route::middleware('auth')->group(function () {
         return view('page_list')->with(['pages'=>$pages, 'seven'=>$seven]);
     });
     Route::post('/page/create', [PageController::class, 'create'])->name('page.create');
+    Route::get('/lead/list/{id}', function($id){
+        $lead = Lead::where('page_id', $id)->orderBy('created_at')->get();
+        
+        return view('leads_list')->with(['pages'=>$lead]);
+    })->name('lead.list');
     
 });
 
