@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/page/create', function(){
         $states = States::orderBy('name')->get();
         return view('page_create')->with(['states'=>$states]);
-    });
+    })->name('page.create');
     Route::get('/page/list', function(){
         $pages = Page::orderBy('created_at')->get();
         $seven = Carbon::today()->subDays(7);
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
         dd($today);*/
 
         return view('page_list')->with(['pages'=>$pages, 'seven'=>$seven]);
-    });
+    })->name('page.list');
     Route::post('/page/create', [PageController::class, 'create'])->name('page.create');
     Route::get('/lead/list/{id}', function($id){
         $lead = Lead::where('page_id', $id)->orderBy('created_at')->get();
