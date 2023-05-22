@@ -13,11 +13,11 @@ class PageTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        PageType::insert([
-            'name' => 'Pré Militar',
-            'name' => 'Bancário',
-            'name' => 'ENCCEJA',
-            'name' => 'CPA10',
-        ]);
+        PageType::insert(
+            ['name' => 'Pré Militar'],
+            ['name' => 'Bancário'],
+            ['name' => 'ENCCEJA'],
+            ['name' => 'CPA10']
+        );
     }
 }
