@@ -30,6 +30,12 @@ Route::domain('premilitar.' . env('APP_URL'))->group(function () {
     });
 });
 
+Route::domain('{account}'.env('APP_URL'))->group(function () {
+    Route::get('/', function (string $account, string $id) {
+        dd($account);
+    });
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
