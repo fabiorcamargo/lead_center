@@ -31,7 +31,7 @@ Route::domain('premilitar.' . env('APP_URL'))->group(function () {
 });
 
 Route::domain('{account}'.env('APP_URL'))->group(function () {
-    Route::get('/', function (string $account, string $id) {
+    Route::get('/test', function (string $account, string $id) {
         dd($account);
     });
 });
