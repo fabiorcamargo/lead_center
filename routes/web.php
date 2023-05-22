@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Cookie;
 |
 */
 Route::domain('premilitar.' . env('APP_URL'))->group(function () {
-    Route::get('posts', function () {
+    Route::get('/posts', function () {
         dd('sim');
         return 'Second subdomain landing page';
     });
