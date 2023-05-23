@@ -162,7 +162,5 @@
         </div>
     </footer>
 
-@php
-    exit();
-@endphp
+
 </x-app-layout>
