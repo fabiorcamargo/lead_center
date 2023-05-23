@@ -144,7 +144,7 @@
                                         <img src="{{asset('/storage/img/flag-brazil.svg')}}" width="40px" alt="Brasil">
                                         <h4 class="mr-8 ml-2">+55 </h4>
                                     </span>
-                                    <input type="tel" id="tel" name="tel" minlength="14" maxlength="15" placeholder="(99) 9 9999-9999" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
+                                    <input type="tel" id="tel" name="tel" minlength="10" maxlength="15" placeholder="(99) 9 9999-9999" title="(99) 9 9999-9999 (Coloque seu telefone nesse formato)" required="required" onkeyup="handlePhone(event)"
                                         class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-r-lg shadow-sm" required autocomplete="tel">
                                 </div>
                             </div>
@@ -158,10 +158,10 @@
 
 
                             <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Idade')" />
+                                <x-input-label for="age" :value="__('Idade')" @required(true)/>
                                 <select id="age" name="age"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm" required>
-                                    <option selected>Selecione sua Idade</option>
+                                    <option value="" >Selecione sua Idade</option>
                                     <option value="12">12</option>
                                     <option value="13">13</option>
                                     <option value="14">14</option>

@@ -12,12 +12,9 @@ class LeadController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->all());
         $de = array('(',')',' ','-');
         $para = array('','','','');
         $request->tel = "55".str_replace($de, $para, $request->tel);
-
-            //dd($request->tel);        
 
         $lead = Lead::create([
             'page_id' => $request->page_id,
