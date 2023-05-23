@@ -163,44 +163,12 @@
     </footer>
     <script>
         
-    /*setTimeout(function() {
+    setTimeout(function() {
         window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}";
-    }, 3000); */  
+    }, 3000);
     </script>
 
     <script>
-        fbq("track", "Lead", {
-                    "event_name": "Lead",
-                    "event_time": "{{ Cookie::get('fbtime') }}",
-                    "action_source": "website",
-                    "event_source_url": "{{ Cookie::get('fbpage') }}",
-                    "eventID": "{{ Cookie::get('fbid1') }}",
-                    "user_data":
-                    {
-                        "em":
-                        [
-                            "{{Hash::make($lead->email)}}"
-                        ],
-                        "ph":
-                        [
-                            "{{Hash::make($lead->phone)}}"
-                        ],
-                        "fn":
-                        [
-                            "{{Hash::make($lead->name)}}"
-                        ],
-                        "ln":
-                        [
-                            "{{Hash::make($lead->lastname)}}"
-                        ],
-                        "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
-                        "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
-                        @isset($_COOKIE['_fbp'])
-                        ,"fbp": "{{$_COOKIE['_fbp']}}",
-                        "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid1') }}"
-                        @endisset
-                    },
-                }
-            );
+        
     </script>
 </x-app-layout>
