@@ -3,6 +3,7 @@
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\City;
 use App\Models\Lead;
 use App\Models\Page;
 use App\Models\States;
@@ -44,10 +45,17 @@ Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
 Route::get('/page/show/{slug}', function ($slug) {
     $fbclid = ((string) Str::uuid());
     Cookie::queue('fbid', $fbclid, 0);
+    Cookie::queue('fbtime', time(), 0);
     $page = Page::where('slug', $slug)->first();
+    //dd($page);
+    $city = (City::where('name', json_decode($page->body)->city)->get());
+    //dd($city);
     $states = States::orderBy('name')->get();
-    
-    return view('page_show')->with(['page' => $page, 'states' => $states]);
+    $states1 = States::where('abbr', json_decode($page->body)->state)->get();
+    //dd($states1);
+
+    //dd($fbclid);
+    return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city]);
 })->name('page.show');
 
 Route::get('/page/leader/', function () {

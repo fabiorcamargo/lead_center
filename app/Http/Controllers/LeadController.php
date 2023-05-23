@@ -30,7 +30,7 @@ class LeadController extends Controller
             'city' => $request->city
         ]);
         //$lead = 1;
-
+        //dd($lead);
         $fb = new ConversionApiFB;
         $request->city = City::find($request->city)->name;
         $request->state = States::find($request->state)->abbr;

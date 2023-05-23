@@ -197,7 +197,7 @@ class ConversionApiFB extends Controller
                 }else{
                     
                     $user_data = (new UserData())  
-                    ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
+                    ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : request()->getClientIp())
                     ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
             }
 
@@ -206,7 +206,7 @@ class ConversionApiFB extends Controller
             $customdata = (new CustomData())
             ->setContentName($object->title)
             ->setContentIds($object->slug)
-            ->setContentCategory($object->tag);
+            ->setContentCategory($object->name);
 
             $event = (new Event())
             ->setEventName("ViewContent")

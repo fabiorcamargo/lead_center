@@ -52,9 +52,9 @@
                                 aria-hidden="true">→</span></a>
                     </div>
                 </div>
-                <div class="relative mt-16 h-80 lg:mt-8">
-                    <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                        src="{{asset('storage/img/bg-militar.jpg')}}" alt="App screenshot" width="1824" height="1080">
+                <div class="relative mt-16 h-80 sm:mt-50 lg:mt-8">
+                    <img class="absolute left-0 top-0 w-[25rem] sm:w-[40rem] lg:w-[50rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+                        src="{{asset('storage/img/PM COLOR.jpg')}}" alt="App screenshot" width="1824" height="1080">
                 </div>
             </div>
         </div>
@@ -171,21 +171,23 @@
                                     <option value="18">18</option>
                                     <option value="18">19</option>
                                     <option value="18">20</option>
+                                    <option value="18">21</option>
+                                    <option value="18">22</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
-
+                            
                             <div class="mx-2 pt-1">
                                 <x-input-label for="age" :value="__('Estado')" />
                                 <select id="state" name="state"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                     required autocomplete="state">
-                                    <option value="">Selecione seu Estado</option>
+                                    <option value="{{(json_decode($states1)[0]->id)}}">{{(json_decode($states1)[0]->abbr)}}</option>
+                                    
                                     @foreach ($states as $key => $value)
-                                    <option value="{{ $value['id'] }}" {{ old('state')==$value['id'] ? 'selected' : ''
-                                        }}>{{ $value['name'] }}</option>
+                                    <option value="{{ $value['id'] }}" {{ old('state')==$value['id'] ? 'selected' : ''}}>{{ $value['name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -195,11 +197,11 @@
                                 <select id="city" name="city"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                     required autocomplete="city">
+                                    <option value="{{(json_decode($city)[0]->id)}}">{{(json_decode($city)[0]->name)}}</option>
                                     @if(old('city') != null)
                                     <option value="{{old('city')}} 'selected'">
                                         {{App\Models\City::find(old('city'))->name}}</option>
                                     @else
-                                    <option>Selecione sua Cidade</option>
                                     @endif
                                 </select>
                             </div>
@@ -219,7 +221,7 @@
 
 
     </section>
-    
+
     
 
     <footer class="bg-white dark:bg-zinc-950 pt-20">
@@ -328,8 +330,8 @@
 <script>
     fbq("track", "ViewContent",
     {
-        "event_name": "ViewContent",
-        "event_time": "{{ time() }}",
+        "event": "ViewContent",
+        "event_time": "{{ Cookie::get('fbtime') }}",
         "action_source": "website",
         "event_source_url": "{{ url()->current() }}",
         "eventID": "{{ Cookie::get('fbid') }}",
@@ -343,7 +345,7 @@
         },
         "custom_data": {
             "content_ids": "{{$page->slug}}",
-            "content_category": "{{$page->tag}}",
+            "content_category": "{{$page->name}}",
             "content_name": "{{$page->title}}"
         }
     }
