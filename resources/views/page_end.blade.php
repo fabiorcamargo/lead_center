@@ -6,9 +6,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        @php
-            header("refresh:5; url=" . env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
-        @endphp
+        <script>
+            
+        </script>
     </x-slot>
 
     <!--
@@ -46,6 +46,11 @@
                 <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Parabéns!!!</h2>
                     <p class="mt-6 text-lg leading-8 text-gray-300">Você será redirecionado para o Whatsapp, envie-nos uma mensagem para concluir.</p>
+
+                    <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                        <a href="{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}"
+                            class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Clique aqui se o redirecionamento não ocorrer automaticamente.</a>
+                    </div>
 
                 </div>
                 <div class="relative mt-16 h-80 lg:mt-8">
@@ -106,8 +111,8 @@
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
-                    <a href="https://flowbite.com/" class="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
+                    <a href="#" class="flex items-center">
+                        <img src="{{asset('storage/img/logo.svg')}}" class="h-8 mr-3" alt="FlowBite Logo" />
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pré-Militar</span>
                     </a>
@@ -117,7 +122,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Sobre</h2>
                         <ul class="text-gray-600 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://flowbite.com/" class="hover:underline">Quem Somos</a>
+                                <a href="#" class="hover:underline">Quem Somos</a>
                             </li>
                         </ul>
                     </div>
@@ -161,6 +166,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        
+    setTimeout(function() {
+        window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}";
+    }, 3000);
+    </script>
 
-
+    <script>
+        
+    </script>
 </x-app-layout>
