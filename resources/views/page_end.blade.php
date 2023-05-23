@@ -6,9 +6,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script>
-            
-        </script>
+        @php
+            header("refresh:5; url=" . env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
+        @endphp
     </x-slot>
 
     <!--
@@ -161,12 +161,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        
-    setTimeout(function() {
-        window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}";
-    }, 3000);
-    </script>
+
 
     <script>
         
