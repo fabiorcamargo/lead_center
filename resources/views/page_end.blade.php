@@ -162,8 +162,7 @@
         </div>
     </footer>
 
-
-    <script>
-        
-    </script>
+@php
+    exit();
+@endphp
 </x-app-layout>
