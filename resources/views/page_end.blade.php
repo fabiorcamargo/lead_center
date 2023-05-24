@@ -169,8 +169,11 @@
     <script>
         
     setTimeout(function() {
-        window.open("{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}, _blank");
-    }, 3000);
+        window.location.href = "google.com.br";
+    }, 5000);
+    @php
+    header( "refresh:2;".env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
+    @endphp
     </script>
 
     <script>
