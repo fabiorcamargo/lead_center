@@ -52,7 +52,7 @@
             <div class="relative mt-16 h-80 lg:mt-8">
 
                 <img class="absolute left-0 top-0 w-[40rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                    src="{{asset('storage/img/bg-militar.jpg')}}" alt="App screenshot" width="500" height="500">
+                    src="{{asset('storage/img/bg-militar.jpg')}}" alt="App screenshot"  height="500">
             </div>
         </div>
 
@@ -80,7 +80,7 @@
                         <div class="row">
                             <div class="h-50 w-50 flex items-center justify-center rounded-full">
                                 <img class="rounded-md bg-white/5 ring-1 ring-white/10"
-                                    src="{{asset('storage/img/PM COLOR.jpg')}}" alt="App screenshot" width="500"
+                                    src="{{asset('storage/img/PM COLOR.jpg')}}" alt="App screenshot" 
                                     height="500">
                             </div>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Palestra Nacional etapa
@@ -112,7 +112,7 @@
                         <div class="row">
                             <div class="h-50 w-50 flex items-center justify-center rounded-full">
                                 <img class="rounded-md bg-white/5 ring-1 ring-white/10"
-                                    src="{{asset('storage/img/exercito-jovens.webp')}}" alt="App screenshot" width="500"
+                                    src="{{asset('storage/img/exercito-jovens.webp')}}" alt="App screenshot" 
                                     height="500">
                             </div>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Ingresso nas Academias
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="h-50 w-50 flex items-center justify-center rounded-full">
                                 <img class="rounded-md bg-white/5 ring-1 ring-white/10"
-                                    src="{{asset('storage/img/atletas.png')}}" alt="App screenshot" width="500"
+                                    src="{{asset('storage/img/atletas.png')}}" alt="App screenshot" 
                                     height="500">
                             </div>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Programa atletas de
@@ -172,7 +172,7 @@
                         <div class="row">
                             <div class="h-50 w-50 flex items-center justify-center rounded-full">
                                 <img class="rounded-md bg-white/5 ring-1 ring-white/10"
-                                    src="{{asset('storage/img/hospital.webp')}}" alt="App screenshot" width="500"
+                                    src="{{asset('storage/img/hospital.webp')}}" alt="App screenshot" 
                                     height="500">
                             </div>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Benefícios</h2>
