@@ -48,7 +48,7 @@
                     <p class="mt-6 text-lg leading-8 text-gray-300">Você será redirecionado para o Whatsapp, envie-nos uma mensagem para concluir.</p>
 
                     <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                        <a href="{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}"
+                        <a href="{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}" target="_blank"
                             class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Clique aqui se o redirecionamento não ocorrer automaticamente.</a>
                     </div>
 
@@ -169,7 +169,7 @@
     <script>
         
     setTimeout(function() {
-        window.location.href = "{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}";
+        window.open("{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}, _blank");
     }, 3000);
     </script>
 
