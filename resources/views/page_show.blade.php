@@ -34,10 +34,8 @@
                     class="text-3xl font-bold tracking-tight sm:text-4xl block bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">
                     Pré-Militar</h2>
                 </div>
-                <p class="mt-6 text-xl leading-8 text-gray-200 dark:text-white">Ingresse na carreira mais promissora do
-                    Brasil.</p>
-                <p class="mt-6 text-md leading-8 text-gray-200 dark:text-white">Inscreva-se no nosso portal para receber
-                    todas as informações.</p>
+                <p class="mt-6 text-xl leading-8 text-gray-200 dark:text-white">Inscreva-se para o processo seletivo Pré-Militar 2023.</p>
+                <p class="mt-6 text-md leading-8 text-gray-200 dark:text-white"></p>
                 <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                     <a href="#cadastro"
                         class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Inscrever-se</a>
@@ -84,19 +82,19 @@
                                     src="{{asset('storage/img/PM COLOR.jpg')}}" alt="App screenshot" 
                                     height="500">
                             </div>
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Palestra Nacional etapa
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Processo Seletivo etapa
                                 {{ json_decode($page->body)->city . " - " .
                                 json_decode($page->body)->state }}</h2>
 
                             <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 O Programa Pré-Militar estará em <b>{{ json_decode($page->body)->city . " - " .
-                                    json_decode($page->body)->state }}</b> realizando uma palestra para os jovens que
+                                    json_decode($page->body)->state }}</b> realizando Processo Seletivo para os jovens que
                                 desejam ingressar na carreira militar,
                                 explicando como funciona o ingresso nas instituições e orientações de preparo do
                                 Candidato.
                             </p>
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Inscreva-se clicando aqui! (últimas vagas)
+                                Inscreva-se clicando aqui!
                             </p>
                         </div>
                         <div class="row-end-4">
@@ -262,13 +260,11 @@
                     @csrf
                     <div>
                         <h1 class="text-3xl ml-2 font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-                            {{ __("Inscrição " . json_decode($page->body)->city . " - " .
+                            {{ __("Inscrição para etapa " . json_decode($page->body)->city . " - " .
                             json_decode($page->body)->state) }}
                         </h1>
                         <p class="mt-4 mx-2 text-gray-500 dark:text-gray-400 text-md leading-relaxed">
-                            Os Jovens inscritos poderão participar do Evento gratuítamente.<br><br>A programação irá
-                            acontecer daqui a 20 dias, o Local, Horários e informações adicionais estaremos enviando
-                            diretamente no seu contato.
+                            Preencha corretamente os dados do Adolescente/Jovem que deseja participar.
                         </p>
                     </div>
                     <div class="grid gap-2 pt-6 mb-6 md:grid-cols-2">
