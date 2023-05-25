@@ -17,9 +17,9 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-0 inset-auto ml-6">
             <div class="relative ml-3  mt-4">
                 <div>
-                    <p class="text-gray-600 dark:text-gray-500 text-sm leading-relaxed">
+                    {{--<p class="text-gray-600 dark:text-gray-500 text-sm leading-relaxed">
                         Abrir
-                    </p>
+                    </p>--}}
                 </div>
             </div>
         </div>

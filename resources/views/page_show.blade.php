@@ -123,9 +123,9 @@
                                 para
                                 canditados em todos os estados.
                             </p>
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            {{--<p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 Atualente as formas de ingressar pod....
-                            </p>
+                            </p>--}}
                         </div>
                         <div class="row-end-4">
                             <x-card.like-footer q="4.712" l="#cadastro" />
@@ -152,9 +152,9 @@
                                 atletas de Alto Rendimento visa descobrir talentos com equipe técnica, centros de
                                 treinamento e equipamentos de alto nível.
                             </p>
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            {{--<p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 Nas últimas olímpiadas os Militares fiz....
-                            </p>
+                            </p>--}}
                         </div>
                         <div class="row-end-4">
 
@@ -193,9 +193,9 @@
                                 </li>
                             </p>
                             <div class=" inline-flex"></div>
-                            <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            {{--<p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                                 Lista completa....
-                            </p>
+                            </p>--}}
 
                         </div>
                         <div class="row-end-4">
