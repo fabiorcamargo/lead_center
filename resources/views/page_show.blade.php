@@ -317,7 +317,6 @@
                                 class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                 required>
                                 <option value="">Selecione sua Idade</option>
-                                <option value="12">12</option>
                                 <option value="13">13</option>
                                 <option value="14">14</option>
                                 <option value="15">15</option>
@@ -325,9 +324,6 @@
                                 <option value="17">17</option>
                                 <option value="18">18</option>
                                 <option value="18">19</option>
-                                <option value="18">20</option>
-                                <option value="18">21</option>
-                                <option value="18">22</option>
                             </select>
                         </div>
                     </div>
