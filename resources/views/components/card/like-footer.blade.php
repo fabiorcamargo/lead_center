@@ -1,5 +1,5 @@
-<p  class="mt-6 animate-pulse  text-sm font-semibold leading-6 text-gray-500 dark:text-gray-500">Saiba mais <span
-    aria-hidden="true">→</span></p>
+{{--<p  class="mt-6 animate-pulse  text-sm font-semibold leading-6 text-gray-500 dark:text-gray-500">Saiba mais <span
+    aria-hidden="true">→</span></p>--}}
 <div class="mx-auto max-w-7xl mt-0">
     <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center">
