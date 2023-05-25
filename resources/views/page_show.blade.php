@@ -97,9 +97,9 @@
                                 Inscreva-se clicando aqui!
                             </p>
                         </div>
-                        <div class="row-end-4">
+                        {{--<div class="row-end-4">
                             <x-card.like-footer q="8.127" l="#cadastro" />
-                        </div>
+                        </div>--}}
                     </div>
 
 
@@ -127,9 +127,9 @@
                                 Atualente as formas de ingressar pod....
                             </p>--}}
                         </div>
-                        <div class="row-end-4">
+                        {{--<div class="row-end-4">
                             <x-card.like-footer q="4.712" l="#cadastro" />
-                        </div>
+                        </div>--}}
                     </div>
 
 
@@ -156,10 +156,10 @@
                                 Nas últimas olímpiadas os Militares fiz....
                             </p>--}}
                         </div>
-                        <div class="row-end-4">
+                        {{--<div class="row-end-4">
 
                             <x-card.like-footer q="7.521" l="#cadastro" />
-                        </div>
+                        </div>--}}
                     </div>
 
 
@@ -198,9 +198,9 @@
                             </p>--}}
 
                         </div>
-                        <div class="row-end-4">
+                       {{--}} <div class="row-end-4">
                             <x-card.like-footer q="6.910" l="#cadastro" />
-                        </div>
+                        </div>--}}
                     </div>
 
 
@@ -270,6 +270,8 @@
                     <div class="grid gap-2 pt-6 mb-6 md:grid-cols-2">
 
                         <input type="text" id="page_id" name="page_id" value="{{$page->id}}" hidden>
+                        <input type="text" id="state1" name="state1" value="{{(json_decode($states1)[0]->id)}}" hidden>
+                        <input type="text" id="city1" name="city1" value="{{(json_decode($city)[0]->id)}}" hidden>
                         <div class="mx-2 pt-2">
                             <x-input-label for="name" :value="__('Nome')" />
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
@@ -278,12 +280,12 @@
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
-                        <div class="mx-2 pt-2">
+                        {{--<div class="mx-2 pt-2">
                             <x-input-label for="lastname" :value="__('Sobrenome')" />
                             <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname"
                                 :value="old('lastname')" placeholder="Gonçalves" required autocomplete="family-name" />
                             <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
-                        </div>
+                        </div>--}}
 
 
                         <div class="mx-2 pt-2">
@@ -303,12 +305,12 @@
                             </div>
                         </div>
 
-                        <div class="mx-2 pt-2">
+                        {{--<div class="mx-2 pt-2">
                             <x-input-label for="email" :value="__('Email (Caso não possua deixe em branco)')" />
                             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                                 :value="old('email')" autocomplete="email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                        </div>
+                        </div>--}}
 
 
                         <div class="mx-2 pt-2">
@@ -330,7 +332,7 @@
 
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
 
-                        <div class="mx-2 pt-1">
+                        {{--<div class="mx-2 pt-1">
                             <x-input-label for="age" :value="__('Estado')" />
                             <select id="state" name="state"
                                 class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
@@ -358,6 +360,14 @@
                                 @else
                                 @endif
                             </select>
+                        </div>--}}
+
+                        <div class="mx-2 pt-2">
+                            <x-input-label for="City" :value="__('Cidade')" />
+                            <x-text-input id="city" class="block mt-1 w-full" type="text" name="city"
+                                :value="old('city')" placeholder="{{(json_decode($city)[0]->name)}}" required
+                                autocomplete="city" />
+                            <x-input-error :messages="$errors->get('city')" class="mt-2" />
                         </div>
 
                     </div>

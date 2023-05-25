@@ -12,6 +12,7 @@ class LeadController extends Controller
 {
     public function create(Request $request)
     {
+        //dd($request->all());
         $de = array('(',')',' ','-');
         $para = array('','','','');
         $request->tel = "55".str_replace($de, $para, $request->tel);
@@ -19,18 +20,18 @@ class LeadController extends Controller
         $lead = Lead::create([
             'page_id' => $request->page_id,
             'name' => $request->name,
-            'lastname' => $request->lastname,
+            'lastname' => "",
             'phone' => $request->tel,
             'email' => isset($request->email) ? $request->email : null,
             'age' => $request->age,
-            'state' => $request->state,
+            'state' => 1,
             'city' => $request->city
         ]);
         //$lead = 1;
 
         $fb = new ConversionApiFB;
-        $request->city = City::find($request->city)->name;
-        $request->state = States::find($request->state)->abbr;
+        $request->city = City::find($request->city1)->name;
+        $request->state = States::find($request->state1)->abbr;
 
         //dd($request->state);
         $fb->Lead($request);

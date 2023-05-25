@@ -5,7 +5,7 @@
         <div class="absolute inset-y-0 left-0 flex items-center">
             <div class="relative flex">
                 <div>
-                    {{--<x-heroicon-o-heart width="20" class="inline-block text-gray-500" />--}}
+                    <x-heroicon-o-heart width="20" class="inline-block text-gray-500" />
                     <x-heroicon-s-heart width="20" class="inline-block text-red-500" />
                     <p class="inline-block mt-4 text-gray-500 dark:text-gray-500 text-xs leading-relaxed">
                         {{ $q }} pessoas amam isso.
