@@ -27,13 +27,13 @@
                                     <th scope="col" class="px-6 py-3">
                                         Idade
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    {{--<th scope="col" class="px-6 py-3">
                                         UF
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Cidade
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    </th>--}}
+                                    <th scope="col" class="px-20 py-3">
                                         Data
                                     </th>
                                     {{--<th scope="col" class="px-6 py-3">
@@ -55,12 +55,12 @@
                                     <td class="px-6 py-4">
                                         {{$page->age}}
                                     </td>
-                                    <td class="px-6 py-4">
-                                        {{--($page->State)->abbr--}}
+                                    {{--<td class="px-6 py-4">
+                                        {{($page->State)->abbr}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{--($page->City)->name--}}
-                                    </td>
+                                        {{($page->City)->name}}
+                                    </td>--}}
                                     <td class="px-6 py-4">
                                         {{$page->updated_at->format('d-m-y H:i')}}
                                     </td>
