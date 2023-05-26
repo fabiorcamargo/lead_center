@@ -56,10 +56,10 @@
                                         {{$page->age}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{($page->State)->abbr}}
+                                        {{--($page->State)->abbr--}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{($page->City)->name}}
+                                        {{--($page->City)->name--}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$page->updated_at->format('d-m-y H:i')}}
