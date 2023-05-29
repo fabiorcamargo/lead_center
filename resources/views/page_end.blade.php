@@ -25,7 +25,9 @@
   }
   ```
 -->
-
+<script>
+    fbq('track', 'CompleteRegistration');
+    </script>
 
     <div class="bg-white dark:bg-zinc-950">
         <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-10 lg:px-8">
@@ -176,7 +178,5 @@
     @endphp
     </script>
 
-    <script>
-        
-    </script>
+    
 </x-app-layout>

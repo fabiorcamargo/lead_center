@@ -35,6 +35,9 @@ class LeadController extends Controller
 
         //dd($request->state);
         $fb->Lead($request);
-        return Redirect::to("/page/end?tel=5544998354889&page=premilitar&lead=$lead");
+
+        $url = isset($request->fbpx) ? "/page/end?tel=5544998354889&page=premilitar&lead=$lead&fbpx=$request->fbpx" : "/page/end?tel=5544998354889&page=premilitar&lead=$lead";
+
+        return Redirect::to($url);
     }
 }

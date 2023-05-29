@@ -51,7 +51,7 @@
             <div class="relative mt-16 h-80 lg:mt-8">
 
                 <img class="absolute left-0 top-0 w-[40rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                    src="{{asset('storage/img/bg-militar.jpg')}}" alt="App screenshot"  height="500">
+                    src="{{asset('storage/img/escola-pre-militar-cepm.webp')}}" alt="App screenshot"  height="500">
             </div>
         </div>
 
@@ -270,6 +270,9 @@
                     <div class="grid gap-2 pt-6 mb-6 md:grid-cols-2">
 
                         <input type="text" id="page_id" name="page_id" value="{{$page->id}}" hidden>
+                        @isset(request()->fbpx)
+                        <input type="text" id="fbpx" name="fbpx" value="{{request()->fbpx}}" hidden>
+                        @endif
                         <input type="text" id="state1" name="state1" value="{{(json_decode($states1)[0]->id)}}" hidden>
                         <input type="text" id="city1" name="city1" value="{{(json_decode($city)[0]->id)}}" hidden>
                         <div class="mx-2 pt-2">
@@ -445,7 +448,7 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript">
+    {{--<script type="text/javascript">
         $(document).ready(function() {
             
             $('select[name="state"]').on('change', function() {
@@ -469,7 +472,7 @@
                 }
             });
         });
-    </script>
+    </script>--}}
 
     <script>
         const handlePhone = (event) => {
@@ -487,6 +490,9 @@
     </script>
 
     @if(env('APP_DEBUG') == false)
+    <script>
+        fbq('track', 'CompleteRegistration');
+    </script>
     <script>
         fbq("track", "ViewContent",
     {
