@@ -42,7 +42,7 @@ Route::get('/', function () {
 });
 Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
 
-Route::get('/{type}/page/show/{slug}', function ($type, $slug) {
+Route::get('/page/show/{slug}', function ($slug) {
     $fbclid = ((string) Str::uuid());
     Cookie::queue('fbid', $fbclid, 0);
     Cookie::queue('fbtime', time(), 0);
@@ -57,7 +57,7 @@ Route::get('/{type}/page/show/{slug}', function ($type, $slug) {
     //dd($states1);
 
     //dd($fbclid);
-    return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city, 'type' => $type]);
+    return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city]);
 })->name('page.show');
 
 Route::get('/page/leader/', function () {
