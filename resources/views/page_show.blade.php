@@ -7,6 +7,14 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+        
+
+        @if(env('APP_DEBUG') == false)
+
+        
+        @endif
+
+
     </x-slot>
 
     <!--
@@ -23,6 +31,7 @@
   }
   ```
 -->
+
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
         <div
             class="relative mb-10 isolate overflow-hidden bg-green-950/90 dark:bg-green-800/50 px-6 pt-16 shadow-xl rounded-lg sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
@@ -447,6 +456,7 @@
                 </div>
             </div>
         </div>
+        
     </footer>
     {{--<script type="text/javascript">
         $(document).ready(function() {
@@ -489,35 +499,30 @@
         }
     </script>
 
-    @if(env('APP_DEBUG') == false)
-    <script>
-        fbq('track', 'CompleteRegistration');
-    </script>
-    <script>
-        fbq("track", "ViewContent",
-    {
-        "event": "ViewContent",
-        "event_time": "{{ Cookie::get('fbtime') }}",
-        "action_source": "website",
-        "event_source_url": "{{ url()->current() }}",
-        "eventID": "{{ Cookie::get('fbid') }}",
-        "user_data": {
-            "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
-            "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
-            @isset($_COOKIE['_fbp'])
-            ,"fbp": "{{$_COOKIE['_fbp']}}",
-            "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid') }}"
-            @endisset
-        },
+<script>
+    fbq("track", "ViewContent",
+{
+    "event": "ViewContent",
+    "event_time": "{{ Cookie::get('fbtime') }}",
+    "action_source": "website",
+    "event_source_url": "{{ url()->current() }}",
+    "user_data": {
+        "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
+        "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
+        @isset($_COOKIE['_fbp'])
+        ,"fbp": "{{$_COOKIE['_fbp']}}",
+        "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid') }}"
+        @endisset
+    },
         "custom_data": {
             "content_ids": "{{$page->slug}}",
             "content_category": "{{$page->name}}",
             "content_name": "{{$page->title}}"
         }
-    }
-    )
-    </script>
-    @endif
+    
+}, {"eventID": "{{ Cookie::get('fbid') }}"}
+)
+</script>
 
     <x-fb-event :event="__('ViewContent')" :page="$page" />
 

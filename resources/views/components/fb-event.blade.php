@@ -13,5 +13,8 @@
     }elseif($event == "PageView"){
     $event = new App\Http\Controllers\ConversionApiFB;
     $event->PageView();
+    }elseif($event == "CompleteRegistration"){
+    $event = new App\Http\Controllers\ConversionApiFB;
+    $event->CompleteRegistration();  
     };
     @endphp

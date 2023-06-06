@@ -142,7 +142,7 @@ class ConversionApiFB extends Controller
         
         if (env('APP_DEBUG') == false){
             
-            $tempo = time();
+            $tempo = Cookie::get('fbtime');
             $page = url()->current();
             $eventid = Cookie::get('fbid');
 
@@ -451,4 +451,112 @@ public function PageView(){
 return;
 }
 
+public function CompleteRegistration(){
+
+    //dd($object->slug);
+    
+    if (env('APP_DEBUG') == false){
+        
+        $tempo = Cookie::get('fbtime');
+        $page = url()->current();
+        $eventid = Cookie::get('fbid');
+
+        $access_token = env('CONVERSIONS_API_ACCESS_TOKEN');
+        $pixel_id = env('CONVERSIONS_API_PIXEL_ID');
+        
+
+        $api = Api::init(null, null, $access_token);
+
+        if (Auth::check()) {
+            
+            return;
+            //die;
+            if(isset($_COOKIE['_fbp'])){
+                
+                $fbp = $_COOKIE['_fbp'];
+                $user_data = (new UserData())  
+                ->setEmail((auth()->user()->email))
+                ->setPhone((auth()->user()->cellphone))
+                ->setLastName((auth()->user()->lastname))
+                ->setFirstName((auth()->user()->name))/*
+                ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
+                ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
+                ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
+                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
+                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
+                ->setFbc($fbp . "." . $eventid)
+                ->setFbp($fbp);
+                }else{
+                    
+                $user_data = (new UserData())  
+                ->setEmail((auth()->user()->email))
+                ->setPhone((auth()->user()->cellphone))
+                ->setLastName((auth()->user()->lastname))
+                ->setFirstName((auth()->user()->name))/*
+                ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
+                ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
+                ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
+                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
+                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
+                }
+            
+        } else {
+            if(isset($_COOKIE['_fbp'])){
+                
+                $fbp = $_COOKIE['_fbp'];
+                $user_data = (new UserData())  
+                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
+                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
+                ->setFbc($fbp . "." . $eventid)
+                ->setFbp($fbp);
+            }else{
+                
+                $user_data = (new UserData())  
+                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : request()->getClientIp())
+                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
+        }
+
+    }
+        
+
+        $event = (new Event())
+        ->setEventName("CompleteRegistration")
+        ->setEventTime($tempo)
+        ->setUserData($user_data)
+        ->setActionSource("website")
+        ->setEventSourceUrl($page)
+        ->setEventId($eventid);
+
+            
+        $events = array();
+        array_push($events, $event);
+        
+        if(env('CONVERSIONS_API_TEST') == true){
+            
+        $request = (new EventRequest($pixel_id))
+            ->setTestEventCode(env('CONVERSIONS_API_TEST_CODE'))
+            ->setEvents($events);
+        }else{
+            
+            $request = (new EventRequest($pixel_id))
+            ->setEvents($events);
+        }
+
+        //dd($request);
+        $response = $request->execute();
+        //dd($response['events_received']);
+
+        //header('Location: ' . $url, true, $permanent ? 301 : 302);
+
+        unset($pixel);
+        unset($token);
+        unset($url);
+        //exit();
+        
+        return ("Evento recebido: " . $response['events_received'] . " | id: " . $response['fbtrace_id']);
+        
 }
+return;
+}           
+}
+

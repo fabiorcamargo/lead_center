@@ -42,10 +42,12 @@ Route::get('/', function () {
 });
 Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
 
-Route::get('/page/show/{slug}', function ($slug) {
+Route::get('/{type}/page/show/{slug}', function ($type, $slug) {
     $fbclid = ((string) Str::uuid());
     Cookie::queue('fbid', $fbclid, 0);
     Cookie::queue('fbtime', time(), 0);
+
+    
     $page = Page::where('slug', $slug)->first();
     //dd($page);
     $city = (City::where('name', json_decode($page->body)->city)->get());
@@ -55,7 +57,7 @@ Route::get('/page/show/{slug}', function ($slug) {
     //dd($states1);
 
     //dd($fbclid);
-    return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city]);
+    return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city, 'type' => $type]);
 })->name('page.show');
 
 Route::get('/page/leader/', function () {
@@ -66,7 +68,9 @@ Route::get('/page/leader/', function () {
 })->name('page.leader');
 
 Route::get('/page/end/', function () {
-    
+    $fbclid = ((string) Str::uuid());
+    Cookie::queue('fbid', $fbclid, 0);
+    Cookie::queue('fbtime', time(), 0);
     return view('page_end');
 })->name('page.end');
 

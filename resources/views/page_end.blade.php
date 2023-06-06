@@ -25,9 +25,7 @@
   }
   ```
 -->
-<script>
-    fbq('track', 'CompleteRegistration');
-    </script>
+
 
     <div class="bg-white dark:bg-zinc-950">
         <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-10 lg:px-8">
@@ -168,15 +166,34 @@
             </div>
         </div>
     </footer>
-    <script>
-        
+    
+      
     setTimeout(function() {
         window.location.href = "google.com.br";
     }, 5000);
     @php
-    header( "refresh:2;".env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
+    //header( "refresh:2;".env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
     @endphp
-    </script>
+    
+<script>
+    fbq("track", "CompleteRegistration",
+{
+    "event": "CompleteRegistration",
+    "event_time": "{{ Cookie::get('fbtime') }}",
+    "action_source": "website",
+    "event_source_url": "{{ url()->current() }}",
+    "user_data": {
+        "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
+        "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
+        @isset($_COOKIE['_fbp'])
+        ,"fbp": "{{$_COOKIE['_fbp']}}",
+        "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid') }}"
+        @endisset
+    }
+}, {"eventID": "{{ Cookie::get('fbid') }}"}
+)
+</script>
 
+<x-fb-event :event="__('CompleteRegistration')" />
     
 </x-app-layout>
