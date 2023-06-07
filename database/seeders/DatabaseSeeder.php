@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
                 PageSeeder::class
             ]);
       
+            
     }
 }
