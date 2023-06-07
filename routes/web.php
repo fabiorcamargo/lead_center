@@ -42,7 +42,7 @@ Route::domain('{account}'.env('APP_URL'))->group(function () {
         return view('welcome');
     });
 
-    Route::get('/export', [LeadController::class, 'export']);
+    Route::get('/export/{id}', [LeadController::class, 'export']);
     
 Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
     Route::get('/dashboard', function () {

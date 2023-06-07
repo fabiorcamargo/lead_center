@@ -67,7 +67,7 @@
                                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Página</a>
                                         <a href="{{route('lead.list', ['id' => $page->id])}}"
                                             class="font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Leads</a>   
-                                        <a href="#"
+                                        <a href="/export/{{$page->id}}"
                                             class="font-medium text-green-600 dark:text-green-500 hover:underline">Exportar</a>
                                             
                                     </td>

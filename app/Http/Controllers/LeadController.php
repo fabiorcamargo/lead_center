@@ -44,9 +44,10 @@ class LeadController extends Controller
     }
 
 
-    public function export() 
+    public function export($id) 
     {
-        return Excel::download(new LeadsExport, 'leads.xlsx');
+            
+        return Excel::download(new LeadsExport($id), 'leads.xlsx');   
     }
 
 }
