@@ -51,5 +51,6 @@ class LeadController extends Controller
         $name = Page::find($id)->name;
         return Excel::download(new ExportView($id), "$name.xlsx");   
     }
+    
 
 }
