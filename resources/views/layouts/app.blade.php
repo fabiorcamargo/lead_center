@@ -20,20 +20,12 @@
         @if (isset((request()->fbpx)))
             @if(request()->fbpx == 2)
             fbq('init', '{{ env('CONVERSIONS_API_PIXEL_ID2') }}');
-            fbq('track', 'PageView');
-        <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id={{ env('CONVERSIONS_API_PIXEL_ID') }}&ev=PageView&noscript=1"
-    /></noscript>
             @endif
         @else
         fbq('init', '{{ env('CONVERSIONS_API_PIXEL_ID') }}');
-        fbq('track', 'PageView');
-        <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id={{ env('CONVERSIONS_API_PIXEL_ID') }}&ev=PageView&noscript=1"
-    /></noscript>
         @endif
         
-        
+        fbq('track', 'PageView');
         </script>
         
         <!-- End Meta Pixel Code -->
