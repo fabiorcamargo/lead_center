@@ -278,7 +278,7 @@
                     </div>
                     <div class="grid gap-2 pt-6 mb-6 md:grid-cols-2">
 
-                        <input type="text" id="page_id" name="page_id" value="{{$page->id}}" hidden>
+                        <input type="number" id="page_id" name="page_id" value="{{$page->id}}" hidden>
                         @isset(request()->fbpx)
                         <input type="text" id="fbpx" name="fbpx" value="{{request()->fbpx}}" hidden>
                         @endif

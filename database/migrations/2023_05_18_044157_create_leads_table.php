@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('page_id')->constrained('pages');
             $table->string('name');
-            $table->string('lastname');
+            $table->string('lastname')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->integer('age');
-            $table->integer('state');
-            $table->integer('city');
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
             $table->timestamps();
         });
     }

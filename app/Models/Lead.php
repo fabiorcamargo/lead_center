@@ -29,4 +29,9 @@ class Lead extends Model
     {
         return $this->hasOne(City::class, 'id','city');
     }
+    public function Page(): HasOne
+    {
+        return $this->hasOne(Page::class);
+    }
+
 }

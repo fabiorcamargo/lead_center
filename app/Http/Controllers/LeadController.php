@@ -16,13 +16,15 @@ class LeadController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->all());
+        //dd($request->page_id);
+        
+        $page = Page::find($request->page_id)->first();
+        //dd($page->id);
         $de = array('(',')',' ','-');
         $para = array('','','','');
         $request->tel = "55".str_replace($de, $para, $request->tel);
 
-        $lead = Lead::create([
-            'page_id' => $request->page_id,
+        $lead = $page->Leads()->create([
             'name' => $request->name,
             'lastname' => "",
             'phone' => $request->tel,
