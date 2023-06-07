@@ -524,6 +524,5 @@
 )
 </script>
 
-    <x-fb-event :event="__('ViewContent')" :page="$page" />
-
 </x-app-layout>
+<x-fb-event :event="__('ViewContent')" :page="$page" />

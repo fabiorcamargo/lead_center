@@ -3,7 +3,6 @@
     if($event == "ViewContent"){
         $event = new App\Http\Controllers\ConversionApiFB;
         $page->tag = "premilitar";
-        sleep(2);
         $event->ViewContent($page);
     }elseif($event == "AddToWishlist"){
     $event = new App\Http\Controllers\ConversionApiFB;
