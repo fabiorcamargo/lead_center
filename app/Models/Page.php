@@ -21,4 +21,5 @@ class Page extends Model
         return $this->hasMany(Lead::class);
     }
     
+    
 }
