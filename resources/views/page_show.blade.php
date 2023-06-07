@@ -456,7 +456,7 @@
                 </div>
             </div>
         </div>
-        
+        <x-fb-event :event="__('ViewContent')" :page="$page" />
     </footer>
     {{--<script type="text/javascript">
         $(document).ready(function() {
@@ -525,4 +525,3 @@
 </script>
 
 </x-app-layout>
-<x-fb-event :event="__('ViewContent')" :page="$page" />
