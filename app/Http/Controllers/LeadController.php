@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportView;
 use App\Exports\LeadsExport;
 use App\Models\City;
 use App\Models\Lead;
+use App\Models\Page;
 use App\Models\States;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -46,8 +48,8 @@ class LeadController extends Controller
 
     public function export($id) 
     {
-            
-        return Excel::download(new LeadsExport($id), 'leads.xlsx');   
+        $name = Page::find($id)->name;
+        return Excel::download(new ExportView($id), "$name.xlsx");   
     }
 
 }

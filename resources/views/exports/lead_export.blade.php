@@ -13,10 +13,10 @@
             </th>
             {{--<th scope="col" class="px-6 py-3">
                 UF
-            </th>
+            </th>--}}
             <th scope="col" class="px-6 py-3">
                 Cidade
-            </th>--}}
+            </th>
             <th scope="col" class="px-20 py-3">
                 Data
             </th>
@@ -41,10 +41,10 @@
             </td>
             {{--<td class="px-6 py-4">
                 {{($page->State)->abbr}}
-            </td>
-            <td class="px-6 py-4">
-                {{($page->City)->name}}
             </td>--}}
+            <td class="px-6 py-4">
+                {{$page->city}}
+            </td>
             <td class="px-6 py-4">
                 {{$page->updated_at->format('d-m-y H:i')}}
             </td>

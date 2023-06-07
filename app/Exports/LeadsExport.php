@@ -4,9 +4,13 @@ namespace App\Exports;
 
 use App\Models\Lead;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class LeadsExport implements FromCollection, WithHeadings
+class LeadsExport implements FromCollection, WithHeadings, WithColumnFormatting
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -35,6 +39,17 @@ class LeadsExport implements FromCollection, WithHeadings
             'Idade',
             'Cidade',
             'Data'
+        ];
+    }
+
+
+    
+    public function columnFormats(): array
+    {
+        return [
+            'B' => NumberFormat::FORMAT_NUMBER,
+            'E' => NumberFormat::FORMAT_DATE_DDMMYYYY,
+            
         ];
     }
 }

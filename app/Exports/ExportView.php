@@ -6,8 +6,10 @@ use App\Invoice;
 use App\Models\Lead;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class ExportView implements FromView
+class ExportView implements FromView, WithColumnFormatting
 {
     private $lead;
 
@@ -23,5 +25,13 @@ class ExportView implements FromView
         return view('exports.lead_export', [
             'pages' => $this->lead
         ]);
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'B' => NumberFormat::FORMAT_NUMBER,
+            
+        ];
     }
 }
