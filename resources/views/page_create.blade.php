@@ -120,7 +120,7 @@
                         <div class="grid gap-6 pt-10 mb-6 md:grid-cols-1">
 
                             <div class="mx-2 pt-1">
-                                <x-input-label for="age" :value="__('Estado')" />
+                                <x-input-label for="age" :value="__('Tipo')" />
                                 <select id="type" name="type"
                                     class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
                                     required autocomplete="state">
