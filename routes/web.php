@@ -43,7 +43,7 @@ Route::domain('{account}'.env('APP_URL'))->group(function () {
     });
 
     Route::get('/export/{id}', [LeadController::class, 'export']);
-    
+ /*   
 Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
     Route::get('/dashboard', function () {
         $pages = PageType::all();
@@ -126,7 +126,7 @@ Route::middleware('auth')->group(function () {
             'created_at', '>=', $date
         )->get();
 
-        dd($today);*/
+        dd($today);
 
         return view('page_list')->with(['pages'=>$pages, 'seven'=>$seven]);
     })->name('page.list');
@@ -137,6 +137,6 @@ Route::middleware('auth')->group(function () {
         return view('leads_list')->with(['pages'=>$lead]);
     })->name('lead.list');
     
-});
+});*/
 
 require __DIR__.'/auth.php';
