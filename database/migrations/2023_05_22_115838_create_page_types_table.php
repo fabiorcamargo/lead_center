@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('page_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
+            $table->json('body')->nullable();
             $table->timestamps();
         });
     }

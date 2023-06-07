@@ -204,9 +204,9 @@ class ConversionApiFB extends Controller
         }
             
             $customdata = (new CustomData())
-            ->setContentName($object->title)
+            ->setContentName($object->name)
             ->setContentIds($object->slug)
-            ->setContentCategory($object->name);
+            ->setContentCategory($object->type);
 
             $event = (new Event())
             ->setEventName("ViewContent")

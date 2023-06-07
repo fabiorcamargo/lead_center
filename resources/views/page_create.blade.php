@@ -120,12 +120,27 @@
                         <div class="grid gap-6 pt-10 mb-6 md:grid-cols-1">
 
                             <div class="mx-2 pt-1">
+                                <x-input-label for="age" :value="__('Estado')" />
+                                <select id="type" name="type"
+                                    class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm"
+                                    required autocomplete="state">
+                                    <option value="">
+                                        Selecione</option>
+    
+                                    @foreach ($types as $type)
+                                    <option value="{{$type->slug}}">{{
+                                        $type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mx-2 pt-1">
                                 <x-input-label for="name" :value="__('Nome')" />
                                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                                     :value="old('name')" required autocomplete="name" />
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-
+                            
                             <div class="mx-2 pt-1">
                                 <x-input-label for="slug" :value="__('Slug')" />
                                 <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug"
@@ -133,7 +148,7 @@
                                 <x-input-error :messages="$errors->get('slug')" class="mt-2" />
                             </div>
 
-                            <div class="mx-2 pt-1">
+                            {{--<div class="mx-2 pt-1">
                                 <x-input-label for="title" :value="__('Título')" />
                                 <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
                                     :value="old('title')" required autocomplete="title" />
@@ -145,7 +160,7 @@
                                 <x-text-input id="subtitle" class="block mt-1 w-full" type="text" name="subtitle"
                                     :value="old('subtitle')" required autocomplete="subtitle" />
                                 <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
-                            </div>
+                            </div>--}}
 
                             <div class="mx-2 pt-1">
                                 <x-input-label for="tel" :value="__('Celular')" />
@@ -160,7 +175,7 @@
                                 </div>
                             </div>
 
-                            <div class="mx-2 pt-1">
+                            {{--<div class="mx-2 pt-1">
                                 <x-input-label for="desc" :value="__('Descrição')" />
                                 @if(old('desc'))
                                 <x-textbox-input id="desc" class="block mt-1 w-full" name="desc"
@@ -170,7 +185,7 @@
                                 desc='' required autocomplete="desc"/>
                                 @endif
                                 <x-input-error :messages="$errors->get('desc')" class="mt-2" />
-                            </div>
+                            </div>--}}
 
                         </div>
 

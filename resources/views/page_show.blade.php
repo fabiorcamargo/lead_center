@@ -516,8 +516,8 @@
     },
         "custom_data": {
             "content_ids": "{{$page->slug}}",
-            "content_category": "{{$page->name}}",
-            "content_name": "{{$page->title}}"
+            "content_category": "{{$page->type}}",
+            "content_name": "{{$page->name}}"
         }
     
 }, {"eventID": "{{ Cookie::get('fbid') }}"}

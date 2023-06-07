@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LeadsExport;
 use App\Models\City;
 use App\Models\Lead;
 use App\Models\States;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeadController extends Controller
 {
@@ -40,4 +42,11 @@ class LeadController extends Controller
 
         return Redirect::to($url);
     }
+
+
+    public function export() 
+    {
+        return Excel::download(new LeadsExport, 'leads.xlsx');
+    }
+
 }

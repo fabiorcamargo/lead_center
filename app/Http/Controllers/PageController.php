@@ -24,11 +24,9 @@ class PageController extends Controller
 
         $body = json_encode([
             'name' => $request->name,
-            'title' => $request->title,
+            'type' => $request->type,
             'slug' => $request->slug,
-            'subtitle' => $request->subtitle,
             'tel' => $request->tel,
-            'desc' => $request->desc,
             'state' => $state,
             'city' => $city
         ]);
@@ -40,7 +38,7 @@ class PageController extends Controller
         } else {
         Page::create([
             'name' => $request->name,
-            'title' => $request->title,
+            'type' => $request->type,
             'slug' => $request->slug,
             'body'=> $body
         ]);
