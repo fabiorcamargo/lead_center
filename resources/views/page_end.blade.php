@@ -167,14 +167,14 @@
         </div>
     </footer>
     
-{{--    <script>
+    <script>
     setTimeout(function() {
         window.location.href = "google.com.br";
     }, 5000);
     @php
     header( "refresh:2;".env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
     @endphp
-</script>  --}}
+    </script>
 <script>
     fbq("track", "SubmitApplication",
                     {!!json_decode(request()->lead)!!}, {"eventID": "{{ Cookie::get('fbid1') }}"}
