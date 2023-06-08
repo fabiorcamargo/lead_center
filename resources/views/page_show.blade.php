@@ -279,8 +279,10 @@
                     <div class="grid gap-2 pt-6 mb-6 md:grid-cols-2">
 
                         <input type="number" id="page_id" name="page_id" value="{{$page->id}}" hidden>
+                        <input type="text" id="wp" name="wp" value="{{json_decode($page->body)->tel}}" hidden>
                         @isset(request()->fbpx)
                         <input type="text" id="fbpx" name="fbpx" value="{{request()->fbpx}}" hidden>
+                        
                         @endif
                         <input type="text" id="state1" name="state1" value="{{(json_decode($states1)[0]->id)}}" hidden>
                         <input type="text" id="city1" name="city1" value="{{(json_decode($city)[0]->id)}}" hidden>

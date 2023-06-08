@@ -16,8 +16,16 @@ class LeadController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->page_id);
-        
+
+        //dd($url);
+        //dd($request->tel);
+        $request->name = strtolower($request->name);
+        //dd($request->name);
+        $request->name = (explode(" ",$request->name, 2));
+        //dd($request->name);
+        $request->lastname = (isset($request->name[1]) ? $request->name[1] : "");
+        $request->name = $request->name[0];
+        //dd($request->lastname);
         $page = Page::where('id', $request->page_id)->first();
         //dd($page->id);
         $de = array('(',')',' ','-');
@@ -26,7 +34,7 @@ class LeadController extends Controller
 
         $lead = $page->Leads()->create([
             'name' => $request->name,
-            'lastname' => "",
+            'lastname' => $request->lastname,
             'phone' => $request->tel,
             'email' => isset($request->email) ? $request->email : null,
             'age' => $request->age,
@@ -35,14 +43,21 @@ class LeadController extends Controller
         ]);
         //$lead = 1;
 
+
+
+
+        
+
         $fb = new ConversionApiFB;
         $request->city = City::find($request->city1)->name;
+        $request->city = str_replace(" ", "", strtolower($request->city));
         $request->state = States::find($request->state1)->abbr;
-
+        $request->state = strtolower($request->state);
         //dd($request->state);
-        $fb->Lead($request);
+        //$fb->Lead($request);
+        $fb->SubmitApplication($request);
 
-        $url = isset($request->fbpx) ? "/page/end?tel=5544998354889&page=premilitar&lead=$lead&fbpx=$request->fbpx" : "/page/end?tel=5544998354889&page=premilitar&lead=$lead";
+        $url = isset($request->fbpx) ? "/page/end?tel=$request->wp&page=premilitar&lead=$lead&fbpx=$request->fbpx" : "/page/end?tel=$request->wp&page=premilitar&lead=$lead";
 
         return Redirect::to($url);
     }

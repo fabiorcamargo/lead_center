@@ -526,113 +526,124 @@ public function CompleteRegistration(){
 return;
 }      
 
-public function SubmitApplication(){
+public function SubmitApplication($request){
 
     //dd($object->slug);
     
+    $caracteres_sem_acento = array(
+        ' ' => '', 'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Â'=>'Z', 'Â'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A',
+        'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I',
+        'Ï'=>'I', 'Ñ'=>'N', 'Å'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U',
+        'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a',
+        'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i',
+        'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'Å'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u',
+        'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f',
+        'Ä'=>'a', 'î'=>'i', 'â'=>'a', 'È'=>'s', 'È'=>'t', 'Ä'=>'A', 'Î'=>'I', 'Â'=>'A', 'È'=>'S', 'È'=>'T',
+    );
+    $request->city = strtolower($request->city);
+    $request->city = strtr($request->city, $caracteres_sem_acento);
+    $request->state = strtolower($request->state);
+    
     if (env('APP_DEBUG') == false){
-        
-        $tempo = Cookie::get('fbtime');
+        $tempo = time();
+        Cookie::queue('fbtime1', $tempo, 0);
         $page = url()->current();
-        $eventid = Cookie::get('fbid');
-
+        $eventid = ((string) Str::uuid());
+        Cookie::queue('fbid1', $eventid, 0);
         $access_token = env('CONVERSIONS_API_ACCESS_TOKEN');
         $pixel_id = env('CONVERSIONS_API_PIXEL_ID');
-        
-
-        $api = Api::init(null, null, $access_token);
-
-        if (Auth::check()) {
-            
-            return;
-            //die;
-            if(isset($_COOKIE['_fbp'])){
-                
-                $fbp = $_COOKIE['_fbp'];
-                $user_data = (new UserData())  
-                ->setEmail((auth()->user()->email))
-                ->setPhone((auth()->user()->cellphone))
-                ->setLastName((auth()->user()->lastname))
-                ->setFirstName((auth()->user()->name))/*
-                ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
-                ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
-                ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
-                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
-                ->setFbc($fbp . "." . $eventid)
-                ->setFbp($fbp);
-                }else{
-                    
-                $user_data = (new UserData())  
-                ->setEmail((auth()->user()->email))
-                ->setPhone((auth()->user()->cellphone))
-                ->setLastName((auth()->user()->lastname))
-                ->setFirstName((auth()->user()->name))/*
-                ->setCities(array("08809a7d1404509f5ca572eea923bad7c334d16bf92bb4ffc1e576ef34572176"))
-                ->setStates(array("0510eddd781102030eb8860671503a28e6a37f5346de429bdd47c0a37c77cc7d"))
-                ->setCountryCodes(array("885036a0da3dff3c3e05bc79bf49382b12bc5098514ed57ce0875aba1aa2c40d"))*/
-                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
-                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
-                }
-            
-        } else {
-            if(isset($_COOKIE['_fbp'])){
-                
-                $fbp = $_COOKIE['_fbp'];
-                $user_data = (new UserData())  
-                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : '')
-                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
-                ->setFbc($fbp . "." . $eventid)
-                ->setFbp($fbp);
-            }else{
-                
-                $user_data = (new UserData())  
-                ->setClientIpAddress(isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : request()->getClientIp())
-                ->setClientUserAgent($_SERVER['HTTP_USER_AGENT']);
-        }
-
-    }
-        
-
-        $event = (new Event())
-        ->setEventName("SubmitApplication")
-        ->setEventTime($tempo)
-        ->setUserData($user_data)
-        ->setActionSource("website")
-        ->setEventSourceUrl($page)
-        ->setEventId($eventid);
-
-            
-        $events = array();
-        array_push($events, $event);
-        
+        $event = "SubmitApplication";
+        if(isset($_COOKIE['_fbp'])){
+            $fbp = $_COOKIE['_fbp'];
+            $fbc = $fbp . "." . $eventid;
+        };
         if(env('CONVERSIONS_API_TEST') == true){
-            
-        $request = (new EventRequest($pixel_id))
-            ->setTestEventCode(env('CONVERSIONS_API_TEST_CODE'))
-            ->setEvents($events);
-        }else{
-            
-            $request = (new EventRequest($pixel_id))
-            ->setEvents($events);
-        }
+            $test = ','. '"test_event_code":"TEST14117"';
+        };
+        $payload = '{
+            "data":
+            [
+                {
+                    "event_name": "'. $event .'",
+                    "event_time": '. $tempo .',
+                    "action_source": "website",
+                    "event_id": "'. $eventid .'",
+                    "event_source_url": "'. $page .'",
+                    "opt_out": false,
+                    "user_data":
+                    {
+                        "fn":
+                        [
+                            "'. hash('sha256',$request->name) .'"
+                        ],
+                        "ln":
+                        [
+                            "'. hash('sha256',$request->lastname) .'"
+                        ],
+                        "ph":
+                        [
+                            "'. hash('sha256',$request->tel) .'"
+                        ],
+                        "st":
+                        [
+                            "'. hash('sha256',$request->state) .'"
+                        ],
+                        "ct":
+                        [
+                            "'. hash('sha256',$request->city) .'"
+                        ],
+                        "country":
+                        [
+                            "'. hash('sha256', "br") .'"
+                        ],
+                        "fbc": "'. (isset($fbc) ? $fbc : '') .'",
+                        "fbp": "' . (isset($fbp) ? $fbp : '') . '",
+                        "client_ip_address": "'. (isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : request()->getClientIp()) .'",
+                        "client_user_agent": "'. $_SERVER['HTTP_USER_AGENT'] .'"
+                    }
+                }
+            ]
+            '. (isset($test) ? $test : '') .'
+        }';
+   
+        $event = new ConversionApiFB;
+        ($event->send($access_token, $pixel_id, $payload));
 
-        //dd($request);
-        $response = $request->execute();
-        //dd($response['events_received']);
-
-        //header('Location: ' . $url, true, $permanent ? 301 : 302);
-
+        
         unset($pixel);
         unset($token);
         unset($url);
         //exit();
-        
-        return ("Evento recebido: " . $response['events_received'] . " | id: " . $response['fbtrace_id']);
-        
 }
 return;
 }
+
+    public function send ($token, $pixel, $payload){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://graph.facebook.com/v15.0/'.$pixel.'/events?access_token='. $token .'',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS =>$payload,
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        //dd($response);
+        return $response;
+    
+    
+    }
 
 }
 
