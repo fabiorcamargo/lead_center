@@ -46,7 +46,9 @@
                 <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Parabéns!!!</h2>
                     <p class="mt-6 text-lg leading-8 text-gray-300">Você será redirecionado para o Whatsapp, envie-nos uma mensagem para concluir.</p>
+                    {{ Cookie::get('fbtime1') }}
 
+                    
                     <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                         <a href="{{env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL')}}" target="_blank"
                             class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Clique aqui se o redirecionamento não ocorrer automaticamente.</a>
@@ -100,8 +102,6 @@
             </div>
         </div>
     </section>--}}
-
-    
 
     
 
@@ -167,31 +167,18 @@
         </div>
     </footer>
     
-    <script>
+{{--    <script>
     setTimeout(function() {
         window.location.href = "google.com.br";
     }, 5000);
     @php
     header( "refresh:2;".env('WP_REDIRECT_URL').request()->input('tel').env('WP_MSG_URL'));
     @endphp
-</script>  
+</script>  --}}
 <script>
     fbq("track", "SubmitApplication",
-{
-    "event": "SubmitApplication",
-    "event_time": {{ Cookie::get('fbtime1') }},
-    "action_source": "website",
-    "event_source_url": "{{ url()->current() }}",
-    "user_data": {
-        "client_ip_address": "{{isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : ''}}",
-        "client_user_agent": "{{$_SERVER['HTTP_USER_AGENT']}}"
-        @isset($_COOKIE['_fbp'])
-        ,"fbp": "{{$_COOKIE['_fbp']}}",
-        "fbc": "{{$_COOKIE['_fbp']}}.{{ Cookie::get('fbid1') }}"
-        @endisset
-    }
-}, {"eventID": "{{ Cookie::get('fbid1') }}"}
-)
+                    {!!json_decode(request()->lead)!!}, {"eventID": "{{ Cookie::get('fbid1') }}"}
+                    )
 </script>
 
     

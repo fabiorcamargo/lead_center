@@ -31,7 +31,7 @@ class LeadController extends Controller
         $de = array('(',')',' ','-');
         $para = array('','','','');
         $request->tel = "55".str_replace($de, $para, $request->tel);
-
+/*
         $lead = $page->Leads()->create([
             'name' => $request->name,
             'lastname' => $request->lastname,
@@ -40,7 +40,7 @@ class LeadController extends Controller
             'age' => $request->age,
             'state' => 1,
             'city' => $request->city
-        ]);
+        ]);*/
         //$lead = 1;
 
 
@@ -55,11 +55,11 @@ class LeadController extends Controller
         $request->state = strtolower($request->state);
         //dd($request->state);
         //$fb->Lead($request);
-        $fb->SubmitApplication($request);
-
-        $url = isset($request->fbpx) ? "/page/end?tel=$request->wp&page=premilitar&lead=$lead&fbpx=$request->fbpx" : "/page/end?tel=$request->wp&page=premilitar&lead=$lead";
-
-        return Redirect::to($url);
+        $payload = Json_encode($fb->SubmitApplication($request));
+        //dd($payload);
+        $url = isset($request->fbpx) ? "/page/end?tel=$request->wp&page=premilitar&lead=$payload&fbpx=$request->fbpx" : "/page/end?tel=$request->wp&page=premilitar&lead=$payload";
+        //dd($url);
+        return Redirect::to($url)->with(["payload" => $payload]);
     }
 
 

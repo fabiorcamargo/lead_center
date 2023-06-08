@@ -557,7 +557,7 @@ public function SubmitApplication($request){
             $fbp = $_COOKIE['_fbp'];
             $fbc = $fbp . "." . $eventid;
         };
-        if(env('CONVERSIONS_API_TEST') == true){
+        if(env('CONVERSIONS_API_TEST') == false){
             $test = ','. '"test_event_code":"TEST14117"';
         };
         $payload = '{
@@ -605,6 +605,46 @@ public function SubmitApplication($request){
             ]
             '. (isset($test) ? $test : '') .'
         }';
+
+        $payload1 = '{
+            "event_name": "'. $event .'",
+            "event_time": "'. $tempo .'",
+            "action_source": "website",
+            "event_id": "'. $eventid .'",
+            "event_source_url": "'. $page .'",
+            "opt_out": false,
+            "user_data":
+            {
+                "fn":
+                [
+                    "'. hash('sha256',$request->name) .'"
+                ],
+                "ln":
+                [
+                    "'. hash('sha256',$request->lastname) .'"
+                ],
+                "ph":
+                [
+                    "'. hash('sha256',$request->tel) .'"
+                ],
+                "st":
+                [
+                    "'. hash('sha256',$request->state) .'"
+                ],
+                "ct":
+                [
+                    "'. hash('sha256',$request->city) .'"
+                ],
+                "country":
+                [
+                    "'. hash('sha256','br') .'"
+                ],
+                "fbc": "'. (isset($fbc) ? $fbc : '') .'",
+                "fbp": "' . (isset($fbp) ? $fbp : '') . '",
+                "client_ip_address": "'. (isset($_SERVER['HTTP_CF_CONNECTING_IP']) ?  $_SERVER['HTTP_CF_CONNECTING_IP'] : request()->getClientIp()) .'",
+                "client_user_agent": "'. $_SERVER['HTTP_USER_AGENT'] .'"
+            }
+        }';
    
         $event = new ConversionApiFB;
         ($event->send($access_token, $pixel_id, $payload));
@@ -614,8 +654,9 @@ public function SubmitApplication($request){
         unset($token);
         unset($url);
         //exit();
+        return $payload1;
 }
-return;
+return ;
 }
 
     public function send ($token, $pixel, $payload){
