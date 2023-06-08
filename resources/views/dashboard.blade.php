@@ -25,9 +25,6 @@
                                         Slug
                                     </th>
                                     
-                                    <th scope="col" class="px-6 py-3">
-                                        Leads
-                                    </th>
                                    
                                 </tr>
                             </thead>
@@ -47,7 +44,8 @@
                                     <td class="px-6 py-4">
                                         {{$page->slug}}
                                     </td>
-                                    
+                               
+
                                     {{--}}
                                     <td class="px-6 py-4 text-right">
                                         <a href="{{route('page.show', ['slug' => $page->slug])}}"
