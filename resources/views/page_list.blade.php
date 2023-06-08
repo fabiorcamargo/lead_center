@@ -22,10 +22,17 @@
                                         Nome
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Leads
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Slug
                                     </th>
-                                    
-                                   
+                                    <th scope="col" class="px-6 py-3">
+                                        Criado
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <span class="sr-only">Edit</span>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,29 +41,29 @@
                                
                                 <tr
                                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        
-                                        <a href="{{$page->slug}}/dashboard"
-                                            class="font-medium text-white-600 dark:text-white-500 hover:underline">{{$page->name}}</a>
+                                       <a href="{{route('lead.list', ['id' => $page->id])}}">{{$page->name}}</a> 
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$page->slug}}
+                                        {{$page->Leads->count()}}
                                     </td>
-                               
-
-                                    {{--}}
+                                    <td class="px-6 py-4">
+                                        {{$page->type}}/{{$page->slug}}
+                                    </td>
+                                    
+                                    <td class="px-6 py-4">
+                                        {{$page->created_at->format('d-m-Y H:i')}}
+                                    </td>
                                     <td class="px-6 py-4 text-right">
-                                        <a href="{{route('page.show', ['slug' => $page->slug])}}"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Página</a>
-                                        <a href="{{route('lead.list', ['id' => $page->id])}}"
-                                            class="font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Leads</a>   
-                                        <a href="#"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</a>
+                                        <a href="p/s/{{$page->slug}}"
+                                            class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Página</a>
+                                        {{--<a href="{{route('lead.list', ['id' => $page->id])}}"
+                                            class="mx-1 font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Leads</a>--}}
+                                        <a href="/export/{{$page->id}}"
+                                            class="mx-1 font-medium text-green-600 dark:text-green-500 hover:underline">Exportar</a>
                                             
-                                    </td>--}}
-                                
+                                    </td>
                                 </tr>
 
                                 @endforeach

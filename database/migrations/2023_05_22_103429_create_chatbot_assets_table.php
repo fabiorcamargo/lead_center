@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('chatbot_assets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('body');
+            $table->string('number');
+            $table->string('asset');
+            $table->string('token');
+            $table->json('body')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('chatbot_assets');
     }
 };
