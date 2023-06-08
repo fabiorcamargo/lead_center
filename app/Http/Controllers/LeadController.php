@@ -19,7 +19,7 @@ class LeadController extends Controller
 
         //dd($url);
         //dd($request->tel);
-        $request->name = strtolower($request->name);
+        
         //dd($request->name);
         $request->name = (explode(" ",$request->name, 2));
         //dd($request->name);
@@ -49,6 +49,10 @@ class LeadController extends Controller
         
 
         $fb = new ConversionApiFB;
+
+        $request->name = strtolower($request->name);
+        $request->lastname = strtolower($request->lastname);
+
         $request->city = City::find($request->city1)->name;
         $request->city = str_replace(" ", "", strtolower($request->city));
         $request->state = States::find($request->state1)->abbr;
