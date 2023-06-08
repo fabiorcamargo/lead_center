@@ -31,7 +31,7 @@ class LeadController extends Controller
         $de = array('(',')',' ','-');
         $para = array('','','','');
         $request->tel = "55".str_replace($de, $para, $request->tel);
-/*
+
         $lead = $page->Leads()->create([
             'name' => $request->name,
             'lastname' => $request->lastname,
@@ -40,7 +40,7 @@ class LeadController extends Controller
             'age' => $request->age,
             'state' => 1,
             'city' => $request->city
-        ]);*/
+        ]);
         //$lead = 1;
 
 
