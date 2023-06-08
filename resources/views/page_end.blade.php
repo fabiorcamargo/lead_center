@@ -176,7 +176,7 @@
     @endphp
 </script>  
 <script>
-    fbq("track", "CompleteRegistration",
+    fbq("track", "SubmitApplication",
 {
     "event": "CompleteRegistration",
     "event_time": "{{ Cookie::get('fbtime') }}",

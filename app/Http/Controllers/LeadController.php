@@ -18,7 +18,7 @@ class LeadController extends Controller
     {
         //dd($request->page_id);
         
-        $page = Page::find($request->page_id)->first();
+        $page = Page::where('id', $request->page_id)->first();
         //dd($page->id);
         $de = array('(',')',' ','-');
         $para = array('','','','');

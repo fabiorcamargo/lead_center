@@ -16,5 +16,8 @@
     }elseif($event == "CompleteRegistration"){
     $event = new App\Http\Controllers\ConversionApiFB;
     $event->CompleteRegistration();  
+    }elseif($event == "SubmitApplication"){
+    $event = new App\Http\Controllers\ConversionApiFB;
+    $event->SubmitApplication();  
     };
     @endphp
