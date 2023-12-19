@@ -37,13 +37,13 @@
                             </thead>
                             <tbody>
                                 @foreach ($pages as $page)
-                                    
-                               
+
+
                                 <tr
                                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                       <a href="{{route('lead.list', ['id' => $page->id])}}">{{$page->name}}</a> 
+                                        <a href="{{route('lead.list', ['id' => $page->id])}}">{{$page->name}}</a>
                                     </th>
                                     <td class="px-6 py-4">
                                         {{$page->Leads->count()}}
@@ -51,7 +51,7 @@
                                     <td class="px-6 py-4">
                                         {{$page->type}}/{{$page->slug}}
                                     </td>
-                                    
+
                                     <td class="px-6 py-4">
                                         {{$page->created_at->format('d-m-Y H:i')}}
                                     </td>
@@ -62,7 +62,13 @@
                                             class="mx-1 font-medium text-yellow-400 dark:text-yellow-400 hover:underline">Leads</a>--}}
                                         <a href="/export/{{$page->id}}"
                                             class="mx-1 font-medium text-green-600 dark:text-green-500 hover:underline">Exportar</a>
-                                            
+                                        @if($page->active == 1)
+                                        <a href="/delete/{{$page->id}}"
+                                            class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</a>
+                                        @else
+                                        <a href="/active/{{$page->id}}"
+                                            class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Excluir</a>
+                                        @endif
                                     </td>
                                 </tr>
 

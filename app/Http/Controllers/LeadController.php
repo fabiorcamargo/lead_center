@@ -72,6 +72,14 @@ class LeadController extends Controller
         $name = Page::find($id)->name;
         return Excel::download(new ExportView($id), "$name.xlsx");   
     }
+
+    public function delete($id) 
+    {
+        $name = Page::find($id);
+        $name->active = 0;
+        $name->save();
+        return back();
+    }
     
 
 }

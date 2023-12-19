@@ -14,7 +14,8 @@ class Page extends Model
         'name',
         'type',
         'slug',
-        'body'
+        'body',
+        'active'
     ];
     public function Leads(): HasMany
     {

@@ -28,7 +28,7 @@
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
-        "spatie/laravel-ignition": "^2.0",
+        "spatie/laravel-ignition": "^2.2",
         "orchestra/testbench": "^8.0",
         "predis/predis": "^1.1"
     },

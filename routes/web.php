@@ -43,6 +43,7 @@ Route::domain('{account}'.env('APP_URL'))->group(function () {
     });
 
     Route::get('/export/{id}', [LeadController::class, 'export']);
+    Route::get('/delete/{id}', [LeadController::class, 'delete']);
    
 Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
     Route::get('/dashboard', function () {
@@ -77,7 +78,9 @@ $pagetype = PageType::all();
             $page_type = str_replace("/", "",request()->route()->getPrefix());
             //dd($page_type);
             //dd(Page::where('name', $page_type)->get());
-            $pages = (Page::where('type', $page_type)->get());
+            $pages = Page::where('type', $page_type)
+            ->where('active', 1)
+            ->get();
             //dd($pages);
 
             return view('page_list')->with(['pages' => $pages]);
