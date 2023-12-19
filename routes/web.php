@@ -80,6 +80,7 @@ $pagetype = PageType::all();
             //dd(Page::where('name', $page_type)->get());
             $pages = Page::where('type', $page_type)
             ->where('active', 1)
+            ->orderBy('created_at', 'desc')
             ->paginate(20);
             //dd($pages);
 
