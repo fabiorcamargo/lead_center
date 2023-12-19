@@ -75,12 +75,16 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="py-8">{{ $pages->links() }}</div>
+
                     </div>
 
 
 
 
+
                 </div>
+
             </div>
         </div>
     </div>

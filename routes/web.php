@@ -80,7 +80,7 @@ $pagetype = PageType::all();
             //dd(Page::where('name', $page_type)->get());
             $pages = Page::where('type', $page_type)
             ->where('active', 1)
-            ->get();
+            ->paginate(1);
             //dd($pages);
 
             return view('page_list')->with(['pages' => $pages]);
