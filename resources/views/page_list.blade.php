@@ -64,7 +64,7 @@
                                             class="mx-1 font-medium text-green-600 dark:text-green-500 hover:underline">Exportar</a>
                                         @if($page->active == 1)
                                         <a href="/delete/{{$page->id}}"
-                                            class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Excluir</a>
+                                            class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Desativar</a>
                                         @else
                                         <a href="/active/{{$page->id}}"
                                             class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Excluir</a>
