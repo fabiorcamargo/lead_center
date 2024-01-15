@@ -25,6 +25,9 @@
                                         Leads
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Leads 24hs
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Slug
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -47,6 +50,12 @@
                                     </th>
                                     <td class="px-6 py-4">
                                         {{$page->Leads->count()}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$page->Leads
+                                            ->where('created_at', '>=', now()->subDay()->startOfDay())
+                                            ->where('created_at', '<', now()->startOfDay())
+                                            ->count()}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$page->type}}/{{$page->slug}}
