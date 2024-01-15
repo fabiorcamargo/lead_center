@@ -1,9 +1,19 @@
 <?php
 
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\City;
+use App\Models\Lead;
+use App\Models\Page;
+use App\Models\PageType;
 use App\Models\States;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +25,88 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::domain('premilitar.' . env('APP_URL'))->group(function () {
+    Route::get('/posts', function () {
+        dd('sim');
+        return 'Second subdomain landing page';
+    });
 });
-Route::get('/first/{slug}', function () {
-    return view('first');
+
+Route::domain('{account}'.env('APP_URL'))->group(function () {
+    Route::get('/test', function (string $account, string $id) {
+        dd($account);
+    });
 });
 
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/export/{id}', [LeadController::class, 'export']);
+    Route::get('/delete/{id}', [LeadController::class, 'delete']);
+   
+Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
+    Route::get('/dashboard', function () {
+        $pages = PageType::all();
+        return view('dashboard')->with(['pages' => $pages]);
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+$pagetype = PageType::all();
+
+    foreach($pagetype as $type){
+
+    Route::prefix($type->slug)->group(function () {
+        Route::get('/p/s/{slug}', function ($slug) {
+            $fbclid = ((string) Str::uuid());
+            Cookie::queue('fbid', $fbclid, 0);
+            Cookie::queue('fbtime', time(), 0);
+
+            
+            $page = Page::where('slug', $slug)->first();
+            //dd($page);
+            $city = (City::where('name', json_decode($page->body)->city)->get());
+            //dd($city);
+            $states = States::orderBy('name')->get();
+            $states1 = States::where('abbr', json_decode($page->body)->state)->get();
+            //dd($states1);
+
+            //dd($fbclid);
+            return view('page_show')->with(['page' => $page, 'states' => $states, 'states1' => $states1, 'city' => $city]);
+        })->name('page.show');
+
+        Route::get('/dashboard', function () {
+            $page_type = str_replace("/", "",request()->route()->getPrefix());
+            //dd($page_type);
+            //dd(Page::where('name', $page_type)->get());
+            $pages = Page::where('type', $page_type)
+            ->where('active', 1)
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+            //dd($pages);
+
+            return view('page_list')->with(['pages' => $pages]);
+        })->middleware(['auth', 'verified'])->name('dashboard.slug');
+
+    });
+    }
+
+Route::get('/page/leader/', function () {
+    
+    $states = States::orderBy('name')->get();
+    return view('page_leader')->with(['states' => $states]);
+
+})->name('page.leader');
+
+Route::get('/page/end/', function () {
+    $fbclid = ((string) Str::uuid());
+    Cookie::queue('fbid', $fbclid, 0);
+    Cookie::queue('fbtime', time(), 0);
+    return view('page_end');
+})->name('page.end');
+
+Route::post('/lead/create/', [LeadController::class, 'create'])->name('lead.create');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,11 +114,33 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/page/create', function(){
-        $states = States::all();
-        return view('page_create')->with(['states'=>$states]);
-    });
+        $states = States::orderBy('name')->get();
+        $types = PageType::all();
+        return view('page_create')->with(['states'=>$states, 'types' => $types]);
+    })->name('page.create');
+    Route::get('/page/list', function(){
+        $pages = Page::orderBy('created_at')->get();
+        $seven = Carbon::today()->subDays(7);
+        $tree = Carbon::today()->subDays(3);
+        $yesterday = Carbon::yesterday();
+        $today = Carbon::today();
+        /*$today =  Lead::where(
+            'page_id', '=', 1
+        )->where(
+            'created_at', '>=', $date
+        )->get();
+
+        dd($today);*/
+
+        return view('page_list')->with(['pages'=>$pages, 'seven'=>$seven]);
+    })->name('page.list');
     Route::post('/page/create', [PageController::class, 'create'])->name('page.create');
-    Route::get('/city/{id}', [PageController::class, 'city'])->name('city');
+    Route::get('/lead/list/{id}', function($id){
+        $lead = Lead::where('page_id', $id)->orderBy('created_at')->get();
+        
+        return view('leads_list')->with(['pages'=>$lead]);
+    })->name('lead.list');
+    
 });
 
 require __DIR__.'/auth.php';
